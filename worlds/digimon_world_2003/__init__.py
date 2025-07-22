@@ -1,6 +1,6 @@
 
 from worlds.AutoWorld import WebWorld, World
-from BaseClasses import Item 
+from BaseClasses import Item, ItemClassification
 from .items import ALL_ITEMS_TABLE,DMW2003Item
 
 class DMW2003WebWorld(WebWorld):
@@ -13,6 +13,7 @@ class DMW2003World(World):
     game = "Digimon World 2003"
     web = DMW2003WebWorld()
     item_name_to_id = {k: v.id for k, v in ALL_ITEMS_TABLE.items()}
+    filler_list = [k for k, v in ALL_ITEMS_TABLE.items() if v.classification & ItemClassification.filler != 0]
 
     topology_present = True
 
@@ -27,3 +28,5 @@ class DMW2003World(World):
     def set_rules(self):
         self.multiworld.completion_condition[self.player] = lambda state: state.has("Victory", self.player)
 
+    def get_filler_item_name(self):
+        return self.random.choice(self.filler_list)
