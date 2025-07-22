@@ -1,7 +1,10 @@
 
 
-from BaseClasses import ItemClassification
+from BaseClasses import ItemClassification, Item
 from typing import NamedTuple, Dict
+
+class DMW2003Item(Item):
+    game: str = "Digimon World 2003"
 
 class ItemData(NamedTuple):
     id: int
