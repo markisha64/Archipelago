@@ -27,9 +27,6 @@ class DMW2003World(World):
 
         return DMW2003Item(name, item.classification, item.id, self.player)
 
-    def set_rules(self):
-        self.multiworld.completion_condition[self.player] = lambda state: state.has("Victory", self.player)
-
     def get_filler_item_name(self):
         return self.random.choice(self.filler_list)
 
@@ -120,10 +117,6 @@ class DMW2003World(World):
         beat_xuen_wu = Region("Beat Xuen Wu Chief", self.player)
         beat_xuen_wu.connect(beat_genbu, "Red ID Pass", items_owned_rule(["Red ID Pass"]))
         beat_xuen_wu.locations.append(get_location("Black ID Pass"))
-
-        beat_galacticmon = Region("Beat Galacticmon", self.player)
-        beat_galacticmon.connect(beat_xuen_wu, "Black ID Pass", items_owned_rule(["Black ID Pass"]))
-        beat_galacticmon.locations.append("Beat Galacticmon")
         
         self.multiworld.regions += [
             menu_region,
@@ -146,8 +139,7 @@ class DMW2003World(World):
             beat_genbu,
             beat_bai_hu,
             beat_xuen_wu,
-            beat_galacticmon
         ]
         
     def set_rules(self):
-        self.multiworld.completion_condition[self.player] = lambda state: state.has("Beat Galacticmon", self.player)
+        self.multiworld.completion_condition[self.player] = lambda state: state.has("Black ID Pass", self.player)
