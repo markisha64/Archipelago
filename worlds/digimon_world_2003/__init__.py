@@ -3,7 +3,7 @@ from worlds.AutoWorld import WebWorld, World
 from BaseClasses import Item, ItemClassification, Region
 from .items import ALL_ITEMS_TABLE,DMW2003Item
 from .locations import get_location, ALL_LOCATIONS_TABLE
-from .rules import items_owned_rule
+from .rules import items_owned_rule_gen
 
 class DMW2003WebWorld(WebWorld):
     option_groups = []
@@ -42,6 +42,8 @@ class DMW2003World(World):
         for location_data, location_name in ALL_LOCATIONS_TABLE.items():
             if not location_data.classification & ItemClassification.progression:
                 menu_region.locations.append(get_location(location_name))
+
+        items_owned_rule = items_owned_rule_gen(self.player)
 
         beat_seiryu = Region("Beat Seiryu Leader", self.player, self.multiworld)
         beat_seiryu.connect(menu_region, "Old Claw", items_owned_rule(["Old Claw"]))
@@ -118,6 +120,10 @@ class DMW2003World(World):
         beat_xuen_wu = Region("Beat Xuen Wu Chief", self.player)
         beat_xuen_wu.connect(beat_genbu, "Red ID Pass", items_owned_rule(["Red ID Pass"]))
         beat_xuen_wu.locations.append(get_location("Black ID Pass"))
+
+        beat_galacticmon = Region("Beat Galacticmon", self.player)
+        beat_galacticmon.connect(beat_xuen_wu, "Black ID Pass", items_owned_rule(["Black ID Pass"]))
+        beat_galacticmon.locations.append("Beat Galacticmon")
         
         self.multiworld.regions += [
             menu_region,
@@ -139,6 +145,9 @@ class DMW2003World(World):
             get_digiegg_knowledge,
             beat_genbu,
             beat_bai_hu,
-            beat_xuen_wu
+            beat_xuen_wu,
+            beat_galacticmon
         ]
         
+    def set_rules(self):
+        self.multiworld.completion_condition[self.player] = lambda state: state.has("Beat Galacticmon", self.player)
