@@ -15,6 +15,7 @@ class DMW2003World(World):
     game = "Digimon World 2003"
     web = DMW2003WebWorld()
     item_name_to_id = {k: v.id for k, v in ALL_ITEMS_TABLE.items()}
+    location_name_to_id = {k: v.id for k, v in ALL_LOCATIONS_TABLE.items()}
     filler_list = [k for k, v in ALL_ITEMS_TABLE.items() if v.classification & ItemClassification.filler != 0]
 
     topology_present = True
