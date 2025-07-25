@@ -57,9 +57,14 @@ class DMW2003Client(BizHawkClient):
 
             quest = int.from_bytes(quest_bytes, "little")
             stage_id = int.from_bytes(stage_id_bytes, "little")
-            
-            # TODO: replace with stage_id e value with proper value
-            if not ctx.finished_game and quest == 45 and stage_id >> 7 == 5:
+
+            group_id = stage_id >> 8
+
+            # skip doing anything if we on main menu / load menu / country select
+            if group_id == 22 or group_id == 14 or group_id == 12:
+                return
+
+            if not ctx.finished_game and quest == 45 and group_id == 2:
                 await ctx.send_msgs([{
                     "cmd": "StatusUpdate",
                     "status": ClientStatus.CLIENT_GOAL
@@ -68,11 +73,7 @@ class DMW2003Client(BizHawkClient):
 
             update_list = {}
             checked_locations = []
-            
-            # TODO: make some kind of check whether were in main menu
-            # cause it can be dangerous to override expected_inventory with empty inventory
-            # and then load a timestamp and move it forwards
-
+          
             if timestamp <= self.last_timestamp: 
                 # loaded older save
                 self.expected_inventory = [x for x in inventory]
