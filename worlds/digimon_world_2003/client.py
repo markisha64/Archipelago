@@ -66,6 +66,10 @@ class DMW2003Client(BizHawkClient):
             update_list = {}
             checked_locations = []
             
+            # TODO: make some kind of check whether were in main menu
+            # cause it can be dangerous to override expected_inventory with empty inventory
+            # and then load a timestamp and move it forwards
+
             if timestamp <= self.last_timestamp: 
                 # loaded older save
                 self.expected_inventory = [x for x in inventory]
