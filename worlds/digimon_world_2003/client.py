@@ -9,7 +9,11 @@ from .locations import ALL_LOCATIONS_BY_ID
 if TYPE_CHECKING:
     from worlds._bizhawk.context import BizHawkClientContext
 
+CLOCK_OFFSET = 0x48d80
 INVENTORY_OFFSET = 0x48db0
+QUEST_OFFSET = 0x4b370
+STAGE_ID_OFFSET = 0x4b3f8
+
 
 class DMW2003Client(BizHawkClient):
     game = "Digimon World 2003"
@@ -43,11 +47,10 @@ class DMW2003Client(BizHawkClient):
             clock_bytes, inventory, quest_bytes, stage_id_bytes = await bizhawk.read(
                 ctx.bizhawk_ctx,
                 [
-                    (0x48d80, 6, "MainRAM"),
+                    (CLOCK_OFFSET, 6, "MainRAM"),
                     (INVENTORY_OFFSET, 403, "MainRAM"),
-                    # TODO: replace with proper addresses
-                    (0x48d80, 4, "MainRAM"),
-                    (0x48d80, 4, "MainRAM"),
+                    (QUEST_OFFSET, 4, "MainRAM"),
+                    (STAGE_ID_OFFSET, 4, "MainRAM"),
                 ]
             )
             timestamp = self.get_timestamp(clock_bytes)
