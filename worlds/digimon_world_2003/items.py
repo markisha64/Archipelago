@@ -14,7 +14,7 @@ ACTUAL_ITEMS: Dict[str, ItemData] = {
 	"Tree Boots": ItemData(4, ItemClassification.useful),
 	"Fishing Pole": ItemData(5, ItemClassification.useful),
 	"Agumon DDNA": ItemData(6, ItemClassification.useful),
-	"El Dorado ID": ItemData(8, ItemClassification.useful),
+	# "El Dorado ID": ItemData(8, ItemClassification.useful),
 	"Seiryu Badge": ItemData(9, ItemClassification.progression),
 	"Suzaku Badge": ItemData(10, ItemClassification.progression),
 	"Byakko Badge": ItemData(11, ItemClassification.progression),
@@ -408,14 +408,13 @@ ACTUAL_ITEMS: Dict[str, ItemData] = {
 	"8lue Card": ItemData(399, ItemClassification.progression),
 	# "リカバリーCD3": ItemData(400, ItemClassification.filler),
 	"Staff Pass": ItemData(401, ItemClassification.progression),
-	"Folder Bag": ItemData(402, ItemClassification.useful)
+	# "Folder Bag": ItemData(402, ItemClassification.useful)
 }
 
 ALL_ITEMS_TABLE: Dict[str, ItemData] = {}
 
-i = 1
 for item_name, data in ACTUAL_ITEMS.items():
     ALL_ITEMS_TABLE[item_name] = data
-    i += 1
 
 
+ALL_ITEMS_BY_ID = {v.id: v for _, v in ALL_ITEMS_TABLE.items()}
