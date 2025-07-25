@@ -49,6 +49,14 @@ class DMW2003Client(BizHawkClient):
             )
             timestamp = self.get_timestamp(clock_bytes)
 
+            # TODO: add win con (quest = 45 and back to overworld)
+            if not ctx.finished_game and False:
+                await ctx.send_msgs([{
+                    "cmd": "StatusUpdate",
+                    "status": ClientStatus.CLIENT_GOAL
+                }])
+                ctx.finished_game = True
+
             update_list = {}
             checked_locations = []
             
