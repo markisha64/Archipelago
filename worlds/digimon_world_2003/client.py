@@ -40,17 +40,23 @@ class DMW2003Client(BizHawkClient):
 
     async def game_watcher(self, ctx: "BizHawkClientContext") -> None:
         try:
-            clock_bytes, inventory = await bizhawk.read(
+            clock_bytes, inventory, quest_bytes, stage_id_bytes = await bizhawk.read(
                 ctx.bizhawk_ctx,
                 [
                     (0x48d80, 6, "MainRAM"),
-                    (INVENTORY_OFFSET, 403, "MainRAM")
+                    (INVENTORY_OFFSET, 403, "MainRAM"),
+                    # TODO: replace with proper addresses
+                    (0x48d80, 4, "MainRAM"),
+                    (0x48d80, 4, "MainRAM"),
                 ]
             )
             timestamp = self.get_timestamp(clock_bytes)
 
-            # TODO: add win con (quest = 45 and back to overworld)
-            if not ctx.finished_game and False:
+            quest = int.from_bytes(quest_bytes, "little")
+            stage_id = int.from_bytes(stage_id_bytes, "little")
+            
+            # TODO: replace with stage_id e value with proper value
+            if not ctx.finished_game and quest == 45 and stage_id >> 7 == 5:
                 await ctx.send_msgs([{
                     "cmd": "StatusUpdate",
                     "status": ClientStatus.CLIENT_GOAL
@@ -69,6 +75,7 @@ class DMW2003Client(BizHawkClient):
 
                 for i in range(2, 403):
                     if inventory[i] > self.expected_inventory[i]:
+                        # TODO: i need to also unequip items here 
                         update_list[i] = self.expected_inventory[i]
 
                         # check if item in pool
