@@ -7,7 +7,10 @@ ALL_LOCATIONS_TABLE: Dict[str, ItemData] = {k: v for k, v in ALL_ITEMS_TABLE.ite
 
 ALL_LOCATIONS_BY_ID: Dict[int, ItemData] = {v.id: v for _, v in ALL_ITEMS_TABLE.items()}
 
-def get_location(name: str, player: int):
+class DMW2003Location(Location):
+    game: str = "Digimon World 2003"
+
+def get_location(name: str, player: int) -> DMW2003Location:
     location = ALL_LOCATIONS_TABLE[name]
     
-    return Location(player, name, location.id)
+    return DMW2003Location(player, name, location.id)
