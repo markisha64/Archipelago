@@ -19,7 +19,7 @@ class DMW2003Client(BizHawkClient):
     game = "Digimon World 2003"
     system = "PSX"
 
-    async def validate_rom(self, ctx: "BizHawkClientContext") -> bool:
+    async def validate_rom(self, ctx: "BizHawkClientContext") -> bool:           
         try:
             rom_name = ((await bizhawk.read(ctx.bizhawk_ctx, [(0x100fc, 20, "MainRAM")]))[0]).decode("ascii")
             if rom_name != "BESLES-03936DMW3-EUR":
@@ -74,7 +74,7 @@ class DMW2003Client(BizHawkClient):
             update_list = {}
             checked_locations = []
           
-            if timestamp <= self.last_timestamp: 
+            if timestamp < self.last_timestamp: 
                 # loaded older save
                 self.expected_inventory = [x for x in inventory]
             else:
@@ -98,6 +98,10 @@ class DMW2003Client(BizHawkClient):
             last_awarded_item_index = int.from_bytes(inventory[0:2], "little")
             item_count = len(ctx.items_received)
 
+            print(f"timestamp: {timestamp}")
+            print(f"last_awarded_item_index: {last_awarded_item_index}")
+            print(f"item_count: {item_count}")
+
             if last_awarded_item_index < item_count:
                 for item in ctx.items_received[last_awarded_item_index:]:
                     i = item.item
@@ -105,7 +109,9 @@ class DMW2003Client(BizHawkClient):
                     update_list[i] = self.expected_inventory[i]
 
             # locations
+            print(checked_locations)
             if checked_locations:
+                print(checked_locations)
                 await ctx.send_msgs([{
                     "cmd": "LocationChecks",
                     "locations": checked_locations 
