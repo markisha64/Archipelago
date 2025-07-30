@@ -5,6 +5,7 @@ from .items import ALL_ITEMS_TABLE,DMW2003Item
 from .locations import get_location, ALL_LOCATIONS_TABLE
 from .rules import items_owned_rule_gen
 from .client import DMW2003Client
+from .options import DMW2003Options
 
 class DMW2003WebWorld(WebWorld):
     option_groups = []
@@ -18,6 +19,9 @@ class DMW2003World(World):
     item_name_to_id = {k: v.id for k, v in ALL_ITEMS_TABLE.items()}
     location_name_to_id = {k: v.id for k, v in ALL_LOCATIONS_TABLE.items()}
     filler_list = [k for k, v in ALL_ITEMS_TABLE.items() if v.classification & ItemClassification.filler != 0]
+
+    options = DMW2003Options
+    options_dataclass = DMW2003Options
 
     topology_present = True
 
