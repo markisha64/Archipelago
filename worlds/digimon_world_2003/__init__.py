@@ -74,7 +74,7 @@ class DMW2003World(World):
         beat_mt.locations.append(get_location("Old Claw", self.player, beat_mt))
         beat_mt.connect(self.get_location_region("TNT Ball"))
 
-        already_got = set()
+        already_got = set([90])
         for shop_idx in range(0, 7):
             for item in set(shops[shop_idx]).difference(already_got):
                 beat_mt.connect(self.get_location_region_by_id(item))
