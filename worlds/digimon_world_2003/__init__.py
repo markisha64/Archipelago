@@ -140,7 +140,7 @@ class DMW2003World(World):
         beat_byakko_leader.locations.append(get_location("Byakko Badge", self.player, beat_byakko_leader ))
 
         beat_hiandromon = Region("Beat Hi-Andromon", self.player, self.multiworld)
-        get_digiegg_sincerity.connect(beat_hiandromon, "Byakko Badge", items_owned_rule(["Byakko Badge"]))
+        beat_byakko_leader.connect(beat_hiandromon, "Byakko Badge", items_owned_rule(["Byakko Badge"]))
         beat_hiandromon.locations.append(get_location("Rusty Rifle", self.player, beat_hiandromon ))
 
         get_staff_pass = Region("Get Staff Pass", self.player, self.multiworld)
