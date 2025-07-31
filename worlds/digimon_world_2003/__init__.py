@@ -15,6 +15,7 @@ class DMW2003WebWorld(WebWorld):
     tutorials = []
 
 class DMW2003World(World):
+    origin_region_name = "Beat Master Tyrannomon"
     game = "Digimon World 2003"
     web = DMW2003WebWorld()
     item_name_to_id = {k: v.id for k, v in ALL_ITEMS_TABLE.items()}
@@ -66,10 +67,7 @@ class DMW2003World(World):
         # item_boxes = self.options.item_boxes.merged()
         shops = self.options.shops.merged()
         
-        menu_region = Region("Menu", self.player, self.multiworld)
-
         beat_mt = Region("Beat Master Tyrannomon", self.player, self.multiworld)
-        menu_region.connect(beat_mt)
 
         beat_mt.locations.append(get_location("Old Claw", self.player, beat_mt))
         beat_mt.connect(self.get_location_region("TNT Ball"))
@@ -212,20 +210,19 @@ class DMW2003World(World):
         
         beat_xuen_wu.locations.append(get_location("Black ID Pass", self.player, beat_xuen_wu ))
 
-        final_region = Region("Final Region", self.player, self.multiworld) 
-        beat_xuen_wu.connect(final_region, "Black ID Pass", items_owned_rule(["Black ID Pass"]))
+        beat_galacticmon = Region("Beat Galacticmon", self.player, self.multiworld) 
+        beat_xuen_wu.connect(beat_galacticmon, "Black ID Pass", items_owned_rule(["Black ID Pass"]))
 
         already_got = set()
         for shop_idx in [15, 16, 17, 18, 19]:
             for item in set(shops[shop_idx]).difference(already_got):
-                final_region.connect(self.get_location_region_by_id(item))
+                beat_galacticmon.connect(self.get_location_region_by_id(item))
 
             already_got = already_got.union(shops[shop_idx])
         
         self.region_cache.clear()
         
         self.multiworld.regions += [
-            menu_region,
             beat_mt,
             beat_seiryu,
             get_fake_blue_card,
@@ -246,7 +243,7 @@ class DMW2003World(World):
             beat_genbu,
             beat_bai_hu,
             beat_xuen_wu,
-            final_region
+            beat_galacticmon
         ]
         
     def set_rules(self):
