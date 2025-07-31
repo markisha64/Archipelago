@@ -98,7 +98,7 @@ class DMW2003World(World):
         get_sepik_mask.locations.append(get_location("Sepik Mask", self.player, get_sepik_mask ))
 
         get_smelly_herb = Region("Get Smelly Herb", self.player, self.multiworld)
-        get_blue_card.connect(get_smelly_herb, "Sepik Mask", items_owned_rule(["Sepik Mask"]))
+        get_sepik_mask.connect(get_smelly_herb, "Sepik Mask", items_owned_rule(["Sepik Mask"]))
         get_smelly_herb.locations.append(get_location("Smelly Herb", self.player, get_smelly_herb ))
 
         beat_suzaku = Region("Beat Suzaku Leader", self.player, self.multiworld)
