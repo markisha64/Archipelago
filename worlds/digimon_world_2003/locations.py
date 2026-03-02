@@ -10,6 +10,9 @@ ALL_LOCATIONS_BY_ID: Dict[int, Tuple[str, ItemData]] = {v.id: (k, v) for k, v in
 class DMW2003Location(Location):
     game: str = "Digimon World 2003"
 
+def check_flag(items: bytes, idx: int) -> bool:
+    return (items[idx // 8] & (1 << (idx % 8))) > 0 
+
 def get_location(name: str, player: int, parent: Region) -> DMW2003Location:
     location = ALL_LOCATIONS_TABLE[name]
     

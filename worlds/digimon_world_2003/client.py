@@ -13,6 +13,7 @@ CLOCK_OFFSET = 0x48d80
 INVENTORY_OFFSET = 0x48db0
 QUEST_OFFSET = 0x4b370
 STAGE_ID_OFFSET = 0x4b3f8
+ITEM_BOXES = 0x4b378
 
 
 class DMW2003Client(BizHawkClient):
@@ -44,13 +45,14 @@ class DMW2003Client(BizHawkClient):
 
     async def game_watcher(self, ctx: "BizHawkClientContext") -> None:
         try:
-            clock_bytes, inventory, quest_bytes, stage_id_bytes = await bizhawk.read(
+            clock_bytes, inventory, quest_bytes, stage_id_bytes, item_boxes = await bizhawk.read(
                 ctx.bizhawk_ctx,
                 [
                     (CLOCK_OFFSET, 6, "MainRAM"),
                     (INVENTORY_OFFSET, 403, "MainRAM"),
                     (QUEST_OFFSET, 4, "MainRAM"),
                     (STAGE_ID_OFFSET, 4, "MainRAM"),
+                    (ITEM_BOXES, 18, "MainRAM"),
                 ]
             )
             timestamp = self.get_timestamp(clock_bytes)
