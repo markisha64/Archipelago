@@ -1,0 +1,590 @@
+[
+  {
+    "file_name": "WSTAG205.PRO",
+    "i": 0,
+    "flag": 6,
+    "name": "Asuka Bridge",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG206.PRO",
+    "i": 0,
+    "flag": 94,
+    "name": "Amaterasu Bridge",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG218.PRO",
+    "i": 0,
+    "flag": 22,
+    "name": "Asuka City",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG218.PRO",
+    "i": 1,
+    "flag": 23,
+    "name": "Asuka City",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG285.PRO",
+    "i": 0,
+    "flag": 21,
+    "name": "Admin Center 1F",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG286.PRO",
+    "i": 0,
+    "flag": 95,
+    "name": "Admin Center 1F",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG300.PRO",
+    "i": 0,
+    "flag": 20,
+    "name": "Admin Center 2F",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG301.PRO",
+    "i": 0,
+    "flag": 96,
+    "name": "Admin Center 2F",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG315.PRO",
+    "i": 0,
+    "flag": 17,
+    "name": "Admin Center B1F",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG315.PRO",
+    "i": 1,
+    "flag": 18,
+    "name": "Admin Center B1F",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG315.PRO",
+    "i": 2,
+    "flag": 19,
+    "name": "Admin Center B1F",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG316.PRO",
+    "i": 0,
+    "flag": 97,
+    "name": "Admin Center B1F",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG316.PRO",
+    "i": 1,
+    "flag": 98,
+    "name": "Admin Center B1F",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG316.PRO",
+    "i": 2,
+    "flag": 99,
+    "name": "Admin Center B1F",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG320.PRO",
+    "i": 0,
+    "flag": 0,
+    "name": "Asuka Sewers",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG320.PRO",
+    "i": 1,
+    "flag": 7,
+    "name": "Asuka Sewers",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG321.PRO",
+    "i": 0,
+    "flag": 100,
+    "name": "Amaterasu Sewer",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG321.PRO",
+    "i": 1,
+    "flag": 101,
+    "name": "Amaterasu Sewer",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG330.PRO",
+    "i": 0,
+    "flag": 1,
+    "name": "Central Park",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG331.PRO",
+    "i": 0,
+    "flag": 29,
+    "name": "Central Park",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG350.PRO",
+    "i": 0,
+    "flag": 2,
+    "name": "West Wire Forest",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG380.PRO",
+    "i": 0,
+    "flag": 3,
+    "name": "Divermon's Lake",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG381.PRO",
+    "i": 0,
+    "flag": 28,
+    "name": "Divermon's Lake",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG395.PRO",
+    "i": 0,
+    "flag": 39,
+    "name": "Wind Prairie",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG396.PRO",
+    "i": 0,
+    "flag": 42,
+    "name": "Wind Prairie",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG400.PRO",
+    "i": 0,
+    "flag": 40,
+    "name": "Kicking Forest",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG401.PRO",
+    "i": 0,
+    "flag": 43,
+    "name": "Kicking Forest",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG450.PRO",
+    "i": 0,
+    "flag": 4,
+    "name": "Bulk Bridge",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG525.PRO",
+    "i": 0,
+    "flag": 8,
+    "name": "Suzaku UG Lake",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG526.PRO",
+    "i": 0,
+    "flag": 31,
+    "name": "Zhu Que UG Lake",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG530.PRO",
+    "i": 0,
+    "flag": 5,
+    "name": "Jungle Shrine",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG531.PRO",
+    "i": 0,
+    "flag": 30,
+    "name": "Jungle Shrine",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG540.PRO",
+    "i": 0,
+    "flag": 24,
+    "name": "Bug Maze",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG540.PRO",
+    "i": 1,
+    "flag": 25,
+    "name": "Bug Maze",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG540.PRO",
+    "i": 2,
+    "flag": 26,
+    "name": "Bug Maze",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG545.PRO",
+    "i": 0,
+    "flag": 27,
+    "name": "Bug Maze Pit",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG560.PRO",
+    "i": 0,
+    "flag": 41,
+    "name": "Pelche Oasis",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG561.PRO",
+    "i": 0,
+    "flag": 84,
+    "name": "Pelche Oasis",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG565.PRO",
+    "i": 0,
+    "flag": 9,
+    "name": "North Badland W",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG565.PRO",
+    "i": 1,
+    "flag": 10,
+    "name": "North Badland W",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG565.PRO",
+    "i": 2,
+    "flag": 11,
+    "name": "North Badland W",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG566.PRO",
+    "i": 0,
+    "flag": 74,
+    "name": "North Badland W",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG566.PRO",
+    "i": 1,
+    "flag": 75,
+    "name": "North Badland W",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG570.PRO",
+    "i": 0,
+    "flag": 12,
+    "name": "North Badland E",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG585.PRO",
+    "i": 0,
+    "flag": 13,
+    "name": "Duct Room 01",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG586.PRO",
+    "i": 0,
+    "flag": 76,
+    "name": "Duct Room 01",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG590.PRO",
+    "i": 0,
+    "flag": 15,
+    "name": "Duct Room 02",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG591.PRO",
+    "i": 0,
+    "flag": 77,
+    "name": "Duct Room 02",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG595.PRO",
+    "i": 0,
+    "flag": 16,
+    "name": "Duct Room 03",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG596.PRO",
+    "i": 0,
+    "flag": 78,
+    "name": "Duct Room 03",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG600.PRO",
+    "i": 0,
+    "flag": 14,
+    "name": "Duct Room 04",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG601.PRO",
+    "i": 0,
+    "flag": 79,
+    "name": "Duct Room 04",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG690.PRO",
+    "i": 0,
+    "flag": 32,
+    "name": "Boot Mountain",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG690.PRO",
+    "i": 1,
+    "flag": 33,
+    "name": "Boot Mountain",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG691.PRO",
+    "i": 0,
+    "flag": 80,
+    "name": "Boot Mountain",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG695.PRO",
+    "i": 0,
+    "flag": 34,
+    "name": "Snow Mountain",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG695.PRO",
+    "i": 1,
+    "flag": 35,
+    "name": "Snow Mountain",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG705.PRO",
+    "i": 0,
+    "flag": 36,
+    "name": "Freeze Mountain",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG705.PRO",
+    "i": 1,
+    "flag": 37,
+    "name": "Freeze Mountain",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG706.PRO",
+    "i": 0,
+    "flag": 82,
+    "name": "Freeze Mountain",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG745.PRO",
+    "i": 0,
+    "flag": 56,
+    "name": "Dark Dungeon",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG746.PRO",
+    "i": 0,
+    "flag": 93,
+    "name": "Dark Dungeon",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG760.PRO",
+    "i": 0,
+    "flag": 38,
+    "name": "Genbu City",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG761.PRO",
+    "i": 0,
+    "flag": 83,
+    "name": "Xuan Wu City",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG795.PRO",
+    "i": 0,
+    "flag": 57,
+    "name": "Magasta B1F",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG795.PRO",
+    "i": 1,
+    "flag": 58,
+    "name": "Magasta B1F",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG795.PRO",
+    "i": 2,
+    "flag": 59,
+    "name": "Magasta B1F",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG795.PRO",
+    "i": 3,
+    "flag": 60,
+    "name": "Magasta B1F",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG795.PRO",
+    "i": 4,
+    "flag": 61,
+    "name": "Magasta B1F",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG795.PRO",
+    "i": 5,
+    "flag": 62,
+    "name": "Magasta B1F",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG795.PRO",
+    "i": 6,
+    "flag": 63,
+    "name": "Magasta B1F",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG795.PRO",
+    "i": 7,
+    "flag": 64,
+    "name": "Magasta B1F",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG795.PRO",
+    "i": 8,
+    "flag": 65,
+    "name": "Magasta B1F",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG795.PRO",
+    "i": 9,
+    "flag": 66,
+    "name": "Magasta B1F",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG795.PRO",
+    "i": 10,
+    "flag": 67,
+    "name": "Magasta B1F",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG800.PRO",
+    "i": 0,
+    "flag": 69,
+    "name": "Magasta B2F",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG800.PRO",
+    "i": 1,
+    "flag": 70,
+    "name": "Magasta B2F",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG800.PRO",
+    "i": 2,
+    "flag": 71,
+    "name": "Magasta B2F",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG800.PRO",
+    "i": 3,
+    "flag": 72,
+    "name": "Magasta B2F",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG800.PRO",
+    "i": 4,
+    "flag": 73,
+    "name": "Magasta B2F",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG860.PRO",
+    "i": 0,
+    "flag": 44,
+    "name": "Seabed",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG860.PRO",
+    "i": 1,
+    "flag": 85,
+    "name": "Seabed",
+    "server": "Asuka"
+  },
+  {
+    "file_name": "WSTAG922.PRO",
+    "i": 0,
+    "flag": 102,
+    "name": "Amaterasu Bridge",
+    "server": "Amaterasu"
+  },
+  {
+    "file_name": "WSTAG953.PRO",
+    "i": 0,
+    "flag": 109,
+    "name": "Kicking Forest",
+    "server": "Amaterasu"
+  }
+]
