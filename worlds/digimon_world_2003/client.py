@@ -4,7 +4,7 @@ from NetUtils import ClientStatus
 
 import worlds._bizhawk as bizhawk
 from worlds._bizhawk.client import BizHawkClient
-from .locations import check_flag, DMW2003Flag, DMW2003FlagType
+from .locations import check_flag, DMW2003Flag, DMW2003FlagType, ALL_LOCATIONS_BY_KEY
 
 if TYPE_CHECKING:
     from worlds._bizhawk.context import BizHawkClientContext
@@ -14,7 +14,19 @@ INVENTORY_OFFSET = 0x48db0
 QUEST_OFFSET = 0x4b370
 STAGE_ID_OFFSET = 0x4b3f8
 ITEM_BOXES = 0x4b378
+STORY_FLAGS = 0x4b3de
 
+def check_flag_locations(length: int, storage: list[bool], read: bytes, flag_type: DMW2003FlagType) -> list[int]:
+    checked = []
+    for i in range(length * 8):
+        if check_flag(read, i) and not storage[i]:
+            flag_key = DMW2003Flag(i, flag_type).to_key()
+            storage[i] = True
+
+            if flag_key in ALL_LOCATIONS_BY_KEY:
+                checked.append(flag_key)
+
+    return checked
 
 class DMW2003Client(BizHawkClient):
     game = "Digimon World 2003"
@@ -33,8 +45,10 @@ class DMW2003Client(BizHawkClient):
         ctx.want_slot_data = True
         self.last_timestamp = 0
         self.item_boxes = [False for _ in range(8 * 18)]
+        self.story_flags = [False for _ in range(8 * 26)]
 
         return True
+
 
     def get_timestamp(self, clock_bytes) -> int:
         hours = int.from_bytes(clock_bytes[0:2], "little")
@@ -45,7 +59,7 @@ class DMW2003Client(BizHawkClient):
 
     async def game_watcher(self, ctx: "BizHawkClientContext") -> None:
         try:
-            clock_bytes, inventory, quest_bytes, stage_id_bytes, item_boxes = await bizhawk.read(
+            clock_bytes, inventory, quest_bytes, stage_id_bytes, item_boxes, story_flags = await bizhawk.read(
                 ctx.bizhawk_ctx,
                 [
                     (CLOCK_OFFSET, 6, "MainRAM"),
@@ -53,6 +67,7 @@ class DMW2003Client(BizHawkClient):
                     (QUEST_OFFSET, 4, "MainRAM"),
                     (STAGE_ID_OFFSET, 4, "MainRAM"),
                     (ITEM_BOXES, 18, "MainRAM"),
+                    (STORY_FLAGS, 26, "MainRAM"),
                 ]
             )
             # timestamp = self.get_timestamp(clock_bytes)
@@ -76,11 +91,8 @@ class DMW2003Client(BizHawkClient):
             update_list = {}
             checked_locations = []
 
-            # item boxes
-            for i in range(18 * 8):
-                if check_flag(item_boxes, i) and not self.item_boxes[i]:
-                    self.item_boxes[i] = True
-                    checked_locations.append(DMW2003Flag(i, DMW2003FlagType.ITEM_BOX).to_key())
+            checked_locations.extend(check_flag_locations(18, self.item_boxes, item_boxes, DMW2003FlagType.ITEM_BOX))
+            checked_locations.extend(check_flag_locations(26, self.story_flags, story_flags, DMW2003FlagType.STORY_FLAG))
 
             # self.last_timestamp = timestamp
             last_awarded_item_index = int.from_bytes(inventory[0:2], "little")

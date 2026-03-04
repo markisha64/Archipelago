@@ -46,5 +46,6 @@ class DMW2003World(World):
             get_location("Item Box \"Asuka Central Park #0\"", self.player, east_sector_region),
             get_location("Item Box \"Asuka West Wire Forest #0\"", self.player, east_sector_region),
             get_location("Item Box \"Asuka Divermon's Lake #0\"", self.player, east_sector_region),
+            get_location("Beat Master Tyrannomon", self.player, east_sector_region)
         ])
         self.multiworld.regions.append(east_sector_region)
