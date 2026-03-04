@@ -15,7 +15,7 @@ class DMW2003WebWorld(WebWorld):
     tutorials = []
 
 class DMW2003World(World):
-    origin_region_name = "Menu"
+    origin_region_name = "East Sector"
     game = "Digimon World 2003"
     web = DMW2003WebWorld()
     item_name_to_id = {k: v.id for k, v in ALL_ITEMS_TABLE.items()}
@@ -40,6 +40,11 @@ class DMW2003World(World):
         return self.random.choice(self.filler_list)
 
     def create_regions(self):
-        menu = Region("Menu", self.player, self.multiworld)
-        menu.locations.extend([get_location(k, self.player, menu) for k, _ in ALL_LOCATIONS_TABLE.items()])
-        self.multiworld.regions.append(menu)
+        east_sector_region = Region("East Sector", self.player, self.multiworld)
+        east_sector_region.locations.extend([
+            get_location("Item Box \"Asuka Asuka Sewers #0\"", self.player, east_sector_region),
+            get_location("Item Box \"Asuka Central Park #0\"", self.player, east_sector_region),
+            get_location("Item Box \"Asuka West Wire Forest #0\"", self.player, east_sector_region),
+            get_location("Item Box \"Asuka Divermon's Lake #0\"", self.player, east_sector_region),
+        ])
+        self.multiworld.regions.append(east_sector_region)
