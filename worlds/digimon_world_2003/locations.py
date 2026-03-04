@@ -17,19 +17,19 @@ class DMW2003Flag:
     flag_type: DMW2003FlagType
 
     def to_key(self) -> int:
-        return self.flag_type.value * 1024 + self.flag
+        return self.flag_type.value * 1024 + self.flag + 1
 
 class DMW2003Location(Location):
     game: str = "Digimon World 2003"
     
-def check_flag(items: bytes, idx: int) -> bool:
-    return (items[idx // 8] & (1 << (idx % 8))) > 0 
+def check_flag(flag_array: bytes, idx: int) -> bool:
+    return (flag_array[idx // 8] & (1 << (idx % 8))) > 0 
 
 item_boxes_json_path = importlib.resources.files(__package__).joinpath("item_boxes.json")
 with open(item_boxes_json_path, "r") as file:
     item_boxes_json = json.load(file)
 
-ALL_LOCATIONS_TABLE: Dict[str, DMW2003Flag] = {f"{entry["server"]} {entry["name"]} #{entry["i"]}": DMW2003Flag(entry["flag"], DMW2003FlagType.ITEM_BOX)  for entry in item_boxes_json}
+ALL_LOCATIONS_TABLE: Dict[str, DMW2003Flag] = {f"Item Box \"{entry["server"]} {entry["name"]} #{entry["i"]}\"": DMW2003Flag(entry["flag"], DMW2003FlagType.ITEM_BOX)  for entry in item_boxes_json}
 ALL_LOCATIONS_BY_KEY: Dict[int, DMW2003Flag] = {entry.to_key(): entry for (name, entry) in ALL_LOCATIONS_TABLE.items()}
 
 def get_location(name: str, player: int, parent: Region) -> DMW2003Location:

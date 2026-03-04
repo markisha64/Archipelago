@@ -4,7 +4,7 @@ from NetUtils import ClientStatus
 
 import worlds._bizhawk as bizhawk
 from worlds._bizhawk.client import BizHawkClient
-# from .locations import ALL_LOCATIONS_BY_ID
+from .locations import check_flag, DMW2003Flag, DMW2003FlagType
 
 if TYPE_CHECKING:
     from worlds._bizhawk.context import BizHawkClientContext
@@ -32,7 +32,7 @@ class DMW2003Client(BizHawkClient):
         ctx.items_handling = 0b111
         ctx.want_slot_data = True
         self.last_timestamp = 0
-        self.expected_inventory = [0 for _ in range(403)]
+        self.item_boxes = [False for _ in range(8 * 18)]
 
         return True
 
@@ -57,85 +57,68 @@ class DMW2003Client(BizHawkClient):
             )
             # timestamp = self.get_timestamp(clock_bytes)
 
-            # quest = int.from_bytes(quest_bytes, "little")
-            # stage_id = int.from_bytes(stage_id_bytes, "little")
+            quest = int.from_bytes(quest_bytes, "little")
+            stage_id = int.from_bytes(stage_id_bytes, "little")
 
-            # group_id = stage_id >> 8
+            group_id = stage_id >> 8
 
-            # # skip doing anything if we on main menu / load menu / country select
-            # if group_id == 22 or group_id == 14 or group_id == 12:
-            #     return
+            # skip doing anything if we on main menu / load menu / country select
+            if group_id == 22 or group_id == 14 or group_id == 12:
+                return
 
-            # if not ctx.finished_game and quest == 45 and group_id == 2:
-            #     await ctx.send_msgs([{
-            #         "cmd": "StatusUpdate",
-            #         "status": ClientStatus.CLIENT_GOAL
-            #     }])
-            #     ctx.finished_game = True
+            if not ctx.finished_game and quest == 45 and group_id == 2:
+                await ctx.send_msgs([{
+                    "cmd": "StatusUpdate",
+                    "status": ClientStatus.CLIENT_GOAL
+                }])
+                ctx.finished_game = True
 
-            # update_list = {}
-            # checked_locations = []
-          
-            # if timestamp < self.last_timestamp: 
-            #     # loaded older save
-            #     self.expected_inventory = [x for x in inventory]
-            # else:
-            #     # check whether you gained new items
-            #     self.last_timestamp = timestamp
+            update_list = {}
+            checked_locations = []
 
-            #     for i in range(2, 403):
-            #         if inventory[i] > self.expected_inventory[i]:
-            #             # TODO: i need to also unequip items here 
-            #             update_list[i] = self.expected_inventory[i]
-
-            #             # check if item in pool
-            #             if i in ALL_LOCATIONS_BY_ID:
-            #                 j = inventory[i] - self.expected_inventory[i]
-
-            #                 checked_locations.extend([i for _ in range(j)])
-            #         else:
-            #             self.expected_inventory[i] = inventory[i]
+            # item boxes
+            for i in range(18 * 8):
+                if check_flag(item_boxes, i) and not self.item_boxes[i]:
+                    self.item_boxes[i] = True
+                    checked_locations.append(DMW2003Flag(i, DMW2003FlagType.ITEM_BOX).to_key())
 
             # self.last_timestamp = timestamp
-            # last_awarded_item_index = int.from_bytes(inventory[0:2], "little")
-            # item_count = len(ctx.items_received)
+            last_awarded_item_index = int.from_bytes(inventory[0:2], "little")
+            item_count = len(ctx.items_received)
 
             # print(f"timestamp: {timestamp}")
             # print(f"last_awarded_item_index: {last_awarded_item_index}")
             # print(f"item_count: {item_count}")
 
-            # if last_awarded_item_index < item_count:
-            #     for item in ctx.items_received[last_awarded_item_index:]:
-            #         i = item.item
-            #         self.expected_inventory[i] = min(99, self.expected_inventory[i] + 1)
-            #         update_list[i] = self.expected_inventory[i]
+            if last_awarded_item_index < item_count:
+                for item in ctx.items_received[last_awarded_item_index:]:
+                    update_list[item.item] = inventory[item.item] + 1
 
             # # locations
-            # print(checked_locations)
-            # if checked_locations:
-            #     print(checked_locations)
-            #     await ctx.send_msgs([{
-            #         "cmd": "LocationChecks",
-            #         "locations": checked_locations 
-            #     }])
+            if checked_locations:
+                print(checked_locations)
+                await ctx.send_msgs([{
+                    "cmd": "LocationChecks",
+                    "locations": checked_locations 
+                }])
 
-            # # update inventory
-            # writes = [(
-            #     INVENTORY_OFFSET + i,
-            #     v.to_bytes(1, "little"),
-            #     "MainRAM"
-            # ) for i, v in update_list.items()]            
+            # update inventory
+            writes = [(
+                INVENTORY_OFFSET + i,
+                v.to_bytes(1, "little"),
+                "MainRAM"
+            ) for i, v in update_list.items()]            
 
-            # # update last awarded index
-            # if last_awarded_item_index < item_count:
-            #     writes.append((
-            #         INVENTORY_OFFSET,
-            #         item_count.to_bytes(2, "little"),
-            #         "MainRAM"
-            #     ))
+            # update last awarded index
+            if last_awarded_item_index < item_count:
+                writes.append((
+                    INVENTORY_OFFSET,
+                    item_count.to_bytes(2, "little"),
+                    "MainRAM"
+                ))
 
-            # if writes:
-            #     await bizhawk.write(ctx.bizhawk_ctx, writes)
+            if writes:
+                await bizhawk.write(ctx.bizhawk_ctx, writes)
 
         except bizhawk.RequestFailedError:
             # The connector didn't respond. Exit handler and return to main loop to reconnect

@@ -15,7 +15,7 @@ class DMW2003WebWorld(WebWorld):
     tutorials = []
 
 class DMW2003World(World):
-    origin_region_name = "Beat Master Tyrannomon"
+    origin_region_name = "Menu"
     game = "Digimon World 2003"
     web = DMW2003WebWorld()
     item_name_to_id = {k: v.id for k, v in ALL_ITEMS_TABLE.items()}
@@ -38,3 +38,8 @@ class DMW2003World(World):
 
     def get_filler_item_name(self):
         return self.random.choice(self.filler_list)
+
+    def create_regions(self):
+        menu = Region("Menu", self.player, self.multiworld)
+        menu.locations.extend([get_location(k, self.player, menu) for k, _ in ALL_LOCATIONS_TABLE.items()])
+        self.multiworld.regions.append(menu)
