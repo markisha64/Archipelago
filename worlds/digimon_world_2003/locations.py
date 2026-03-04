@@ -5,15 +5,19 @@ from BaseClasses import Location, Region
 from dataclasses import dataclass
 import json
 import importlib
+from enum import Enum
+
+class DMW2003FlagType(Enum):
+    ITEM_BOX = 0
 
 @dataclass
 class DMW2003Flag:
     """flag + flag_type"""
     flag: int
-    flag_type: str
+    flag_type: DMW2003FlagType
 
-    def to_key(self) -> str:
-        return f"{self.flag_type}_{self.flag}"
+    def to_key(self) -> int:
+        return self.flag_type.value * 1024 + self.flag
 
 class DMW2003Location(Location):
     game: str = "Digimon World 2003"
@@ -25,10 +29,10 @@ item_boxes_json_path = importlib.resources.files(__package__).joinpath("item_box
 with open(item_boxes_json_path, "r") as file:
     item_boxes_json = json.load(file)
 
-ALL_LOCATIONS_TABLE: Dict[str, DMW2003Flag] = {f"{entry["server"]} {entry["name"]} #{entry["i"]}": DMW2003Flag(entry["flag"], "item_box")  for entry in item_boxes_json}
-ALL_LOCATIONS_BY_KEY: Dict[str, DMW2003Flag] = {entry.to_key(): entry for (name, entry) in ALL_LOCATIONS_TABLE.items()}
+ALL_LOCATIONS_TABLE: Dict[str, DMW2003Flag] = {f"{entry["server"]} {entry["name"]} #{entry["i"]}": DMW2003Flag(entry["flag"], DMW2003FlagType.ITEM_BOX)  for entry in item_boxes_json}
+ALL_LOCATIONS_BY_KEY: Dict[int, DMW2003Flag] = {entry.to_key(): entry for (name, entry) in ALL_LOCATIONS_TABLE.items()}
 
 def get_location(name: str, player: int, parent: Region) -> DMW2003Location:
     location = ALL_LOCATIONS_TABLE[name]
     
-    return DMW2003Location(player, name, location.id, parent)
+    return DMW2003Location(player, name, location.to_key(), parent)
