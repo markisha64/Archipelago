@@ -43,7 +43,15 @@ STORY_LOCATIONS: Dict[str, DMW2003Flag] = {
     "Beat BK MegaGargomon": DMW2003Flag(121, DMW2003FlagType.STORY),
     "Beat BK Imperialdramon": DMW2003Flag(123, DMW2003FlagType.STORY),
     "Beat Qing Long Chief": DMW2003Flag(167, DMW2003FlagType.STORY),
-    "Beat BK Seraphimon": DMW2003Flag(125, DMW2003FlagType.STORY)
+    "Beat BK Seraphimon": DMW2003Flag(125, DMW2003FlagType.STORY),
+    "Beat BK WarGrowlmon": DMW2003Flag(127, DMW2003FlagType.STORY),
+    "Beat BK KingNumemon": DMW2003Flag(129, DMW2003FlagType.STORY),
+    "Beat Ice Witch": DMW2003Flag(25, DMW2003FlagType.STORY),
+    "Beat Fire Knight": DMW2003Flag(64, DMW2003FlagType.STORY),
+    "Beat Dark Knight": DMW2003Flag(66, DMW2003FlagType.STORY),
+    "Beat Ice Master": DMW2003Flag(131, DMW2003FlagType.STORY),
+    "Beat Fire Master": DMW2003Flag(133, DMW2003FlagType.STORY),
+    "Beat Dark Master": DMW2003Flag(135, DMW2003FlagType.STORY),
 }
 
 NPC2_LOCATIONS: Dict[str, DMW2003Flag] = {
@@ -59,6 +67,9 @@ QUEST_LOCATIONS: Dict[str, DMW2003Flag] = {
     "Beat HiAndromon": DMW2003Flag(18, DMW2003FlagType.QUEST),
     "Beat Zhu Que Chief": DMW2003Flag(29, DMW2003FlagType.QUEST),
     "DE Knowledge": DMW2003Flag(30, DMW2003FlagType.QUEST),
+    "Beat Genbu Leader": DMW2003Flag(31, DMW2003FlagType.QUEST),
+    "Beat Bai Hu Chief": DMW2003Flag(35, DMW2003FlagType.QUEST),
+    "Beat Xuan Wu Chief": DMW2003Flag(36, DMW2003FlagType.QUEST),
 }
 
 ALL_LOCATIONS_TABLE: Dict[str, DMW2003Flag] ={} 

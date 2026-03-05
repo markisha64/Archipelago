@@ -82,6 +82,7 @@ class DMW2003World(World):
             get_location("DE Sincerity", self.player, west_sector_region),
             get_location("Item Box \"Asuka Suzaku UG Lake #0\"", self.player, west_sector_region),
             get_location("Item Box \"Asuka Asuka Sewers #1\"", self.player, west_sector_region),
+            get_location("Item Box \"Asuka Asuka Bridge #0\"", self.player, west_sector_region),
             get_location("Item Box \"Asuka North Badland W #0\"", self.player, west_sector_region),
             get_location("Item Box \"Asuka North Badland W #1\"", self.player, west_sector_region),
             get_location("Item Box \"Asuka North Badland W #2\"", self.player, west_sector_region),
@@ -100,7 +101,8 @@ class DMW2003World(World):
         amaterasu_region = Region("Amaterasu", self.player, self.multiworld)
         west_sector_region.connect(amaterasu_region, "Staff Pass", items_owned_rule(["Staff Pass"]))
         amaterasu_region.locations.extend([
-            # Asuka Admin Center
+            # AS Admin Center
+            get_location("Item Box \"Asuka Admin Center 1F #0\"", self.player, amaterasu_region),
             get_location("Item Box \"Asuka Admin Center B1F #0\"", self.player, amaterasu_region),
             get_location("Item Box \"Asuka Admin Center B1F #1\"", self.player, amaterasu_region),
             get_location("Item Box \"Asuka Admin Center B1F #2\"", self.player, amaterasu_region),
@@ -111,7 +113,7 @@ class DMW2003World(World):
             get_location("Item Box \"Asuka Bug Maze #1\"", self.player, amaterasu_region),
             get_location("Item Box \"Asuka Bug Maze #2\"", self.player, amaterasu_region),
             get_location("Item Box \"Asuka Bug Maze Pit #0\"", self.player, amaterasu_region),
-            # Amaterasu Pre DE Knowledge
+            # AM Pre DE Knowledge
             get_location("Beat BK MegaGargomon", self.player, amaterasu_region),
             get_location("Item Box \"Amaterasu Divermon's Lake #0\"", self.player, amaterasu_region),
             get_location("Beat BK Imperialdramon", self.player, amaterasu_region),
@@ -121,6 +123,73 @@ class DMW2003World(World):
             get_location("Beat Zhu Que Chief", self.player, amaterasu_region),
             get_location("Item Box \"Amaterasu Zhu Que UG Lake #0\"", self.player, amaterasu_region),
             get_location("DE Knowledge", self.player, amaterasu_region),
+            # AM West Sector
+            get_location("Item Box \"Amaterasu North Badland W #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Amaterasu North Badland W #1\"", self.player, amaterasu_region),
+            get_location("Item Box \"Amaterasu Duct Room 01 #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Amaterasu Duct Room 02 #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Amaterasu Duct Room 03 #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Amaterasu Duct Room 04 #0\"", self.player, amaterasu_region),
+            get_location("Beat BK WarGrowlmon", self.player, amaterasu_region),
+            get_location("Beat BK KingNumemon", self.player, amaterasu_region),
+            get_location("Beat Bai Hu Chief", self.player, amaterasu_region),
+            # AS North Sector
+            get_location("Item Box \"Asuka Boot Mountain #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Boot Mountain #1\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Snow Mountain #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Snow Mountain #1\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Freeze Mountain #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Freeze Mountain #1\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Dark Dungeon #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Genbu City #0\"", self.player, amaterasu_region),
+            get_location("Beat Genbu Leader", self.player, amaterasu_region),
+            get_location("Beat Ice Witch", self.player, amaterasu_region),
+            get_location("Beat Fire Knight", self.player, amaterasu_region),
+            get_location("Beat Dark Knight", self.player, amaterasu_region),
+            # AM North Sector
+            get_location("Item Box \"Amaterasu Boot Mountain #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Amaterasu Freeze Mountain #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Amaterasu Dark Dungeon #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Amaterasu Xuan Wu City #0\"", self.player, amaterasu_region),
+            get_location("Beat Xuan Wu Chief", self.player, amaterasu_region),
+            get_location("Beat Ice Master", self.player, amaterasu_region),
+            get_location("Beat Fire Master", self.player, amaterasu_region),
+            get_location("Beat Dark Master", self.player, amaterasu_region),
+            # Amaterasu City
+            get_location("Item Box \"Amaterasu Amaterasu Sewer #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Amaterasu Amaterasu Sewer #1\"", self.player, amaterasu_region),
+            get_location("Item Box \"Amaterasu Amaterasu Bridge #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Amaterasu Admin Center 1F #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Amaterasu Admin Center B1F #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Amaterasu Admin Center B1F #1\"", self.player, amaterasu_region),
+            # empty box
+            # get_location("Item Box \"Amaterasu Admin Center B1F #2\"", self.player, amaterasu_region), 
+            # get_location("Item Box \"Asuka Admin Center 2F #0\"", self.player, south_sector_2_region),
+            # Digmon only boxes
+            get_location("Item Box \"Asuka Kicking Forest #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Amaterasu Kicking Forest #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Wind Prairie #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Amaterasu Wind Prairie #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Pelche Oasis #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Amaterasu Pelche Oasis #0\"", self.player, amaterasu_region),
+            # Magasta B1F (commented empty boxes)
+            get_location("Item Box \"Asuka Magasta B1F #0\"", self.player, amaterasu_region),
+            # get_location("Item Box \"Asuka Magasta B1F #1\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Magasta B1F #2\"", self.player, amaterasu_region),
+            # get_location("Item Box \"Asuka Magasta B1F #3\"", self.player, amaterasu_region),
+            # get_location("Item Box \"Asuka Magasta B1F #4\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Magasta B1F #5\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Magasta B1F #6\"", self.player, amaterasu_region),
+            # get_location("Item Box \"Asuka Magasta B1F #7\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Magasta B1F #8\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Magasta B1F #9\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Magasta B1F #10\"", self.player, amaterasu_region),
+            # Magasta B2F (commented empty boxes)
+            get_location("Item Box \"Asuka Magasta B2F #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Magasta B2F #1\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Magasta B2F #2\"", self.player, amaterasu_region),
+            # get_location("Item Box \"Asuka Magasta B2F #3\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Magasta B2F #4\"", self.player, amaterasu_region),
         ])
 
         self.multiworld.regions.extend([
