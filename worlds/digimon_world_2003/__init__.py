@@ -50,5 +50,6 @@ class DMW2003World(World):
             get_location("Beat Master Tyrannomon", self.player, east_sector_region),
             get_location("Beat Pharaohmon", self.player, east_sector_region),
             get_location("Beat Seiryu Leader", self.player, east_sector_region),
+            get_location("Beat Keith", self.player, east_sector_region),
         ])
         self.multiworld.regions.append(east_sector_region)
