@@ -31,6 +31,9 @@ class DMW2003World(World):
     def create_items(self):
         self.multiworld.itempool += [self.create_item(name) for name in ALL_ITEMS_TABLE.keys()]
 
+        # game softlocks if you try training without Silver ID after East Sector
+        self.multiworld.get_location("Beat Seiryu Leader", self.player).place_locked_item(self.create_item("Silver ID"))
+
     def create_item(self, name: str) -> Item:
         item = ALL_ITEMS_TABLE[name]
 
