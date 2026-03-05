@@ -37,7 +37,8 @@ ITEM_BOX_LOCATIONS: Dict[str, DMW2003Flag] = {f"Item Box \"{entry["server"]} {en
 STORY_LOCATIONS: Dict[str, DMW2003Flag] = {
     "Beat Master Tyrannomon": DMW2003Flag(16, DMW2003FlagType.STORY),
     "Beat Pharaohmon": DMW2003Flag(84, DMW2003FlagType.STORY),
-    "Beat Keith": DMW2003Flag(22, DMW2003FlagType.STORY)
+    "Beat Keith": DMW2003Flag(22, DMW2003FlagType.STORY),
+    "Beat Zanbamon": DMW2003Flag(86, DMW2003FlagType.STORY)
 }
 
 NPC2_LOCATIONS: Dict[str, DMW2003Flag] = {

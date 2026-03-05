@@ -40,6 +40,8 @@ class DMW2003World(World):
         return self.random.choice(self.filler_list)
 
     def create_regions(self):
+        items_owned_rule = items_owned_rule_gen(self.player)
+        
         east_sector_region = Region("East Sector", self.player, self.multiworld)
         east_sector_region.locations.extend([
             get_location("Hidden Bits", self.player, east_sector_region),
@@ -50,6 +52,27 @@ class DMW2003World(World):
             get_location("Beat Master Tyrannomon", self.player, east_sector_region),
             get_location("Beat Pharaohmon", self.player, east_sector_region),
             get_location("Beat Seiryu Leader", self.player, east_sector_region),
+            # keith is questionable since hes missable
             get_location("Beat Keith", self.player, east_sector_region),
         ])
-        self.multiworld.regions.append(east_sector_region)
+
+        south_sector_1_region = Region("South Sector I", self.player, self.multiworld)
+        east_sector_region.connect(south_sector_1_region, "Blue Card", items_owned_rule(["Blue Card"]))
+        south_sector_1_region.locations.extend([
+            get_location("Item Box \"Asuka Bulk Bridge #0\"", self.player, south_sector_1_region),
+        ])
+
+        south_sector_2_region = Region("South Sector II", self.player, self.multiworld)
+        south_sector_1_region.connect(south_sector_2_region, "Sepik Mask", items_owned_rule(["Sepik Mask"]))
+        south_sector_2_region.locations.extend([
+            get_location("Item Box \"Asuka Jungle Shrine #0\"", self.player, south_sector_2_region),
+            # also questionable
+            get_location("Item Box \"Asuka Admin Center 2F #0\"", self.player, south_sector_2_region),
+            get_location("Beat Zanbamon", self.player, south_sector_2_region),
+        ])
+
+        self.multiworld.regions.extend([
+            east_sector_region,
+            south_sector_1_region,
+            south_sector_2_region
+        ])
