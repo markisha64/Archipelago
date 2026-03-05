@@ -94,9 +94,36 @@ class DMW2003World(World):
             get_location("Beat Datamon", self.player, west_sector_region),
         ])
 
+        amaterasu_region = Region("Amaterasu", self.player, self.multiworld)
+        west_sector_region.connect(amaterasu_region, "Staff Pass", items_owned_rule(["Staff Pass"]))
+        amaterasu_region.locations.extend([
+            # Asuka Admin Center
+            get_location("Item Box \"Asuka Admin Center B1F #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Admin Center B1F #1\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Admin Center B1F #2\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Asuka City #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Asuka City #1\"", self.player, amaterasu_region),
+            # Bug Maze
+            get_location("Item Box \"Asuka Bug Maze #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Bug Maze #1\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Bug Maze #2\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Bug Maze Pit #0\"", self.player, amaterasu_region),
+            # Amaterasu Pre DE Knowledge
+            get_location("Beat BK MegaGargomon", self.player, amaterasu_region),
+            get_location("Item Box \"Amaterasu Divermon's Lake #0\"", self.player, amaterasu_region),
+            get_location("Beat BK Imperialdramon", self.player, amaterasu_region),
+            get_location("Beat Qing Long Chief", self.player, amaterasu_region),
+            get_location("Item Box \"Amaterasu Central Park #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Amaterasu Jungle Shrine #0\"", self.player, amaterasu_region),
+            get_location("Beat Zhu Que Chief", self.player, amaterasu_region),
+            get_location("Item Box \"Amaterasu Zhu Que UG Lake #0\"", self.player, amaterasu_region),
+            get_location("DE Knowledge", self.player, amaterasu_region),
+        ])
+
         self.multiworld.regions.extend([
             east_sector_region,
             south_sector_1_region,
             south_sector_2_region,
-            west_sector_region
+            west_sector_region,
+            amaterasu_region
         ])

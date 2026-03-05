@@ -40,6 +40,10 @@ STORY_LOCATIONS: Dict[str, DMW2003Flag] = {
     "Beat Keith": DMW2003Flag(22, DMW2003FlagType.STORY),
     "Beat Zanbamon": DMW2003Flag(86, DMW2003FlagType.STORY),
     "Beat Datamon": DMW2003Flag(9, DMW2003FlagType.STORY),
+    "Beat BK MegaGargomon": DMW2003Flag(121, DMW2003FlagType.STORY),
+    "Beat BK Imperialdramon": DMW2003Flag(123, DMW2003FlagType.STORY),
+    "Beat Qing Long Chief": DMW2003Flag(167, DMW2003FlagType.STORY),
+    "Beat BK Seraphimon": DMW2003Flag(125, DMW2003FlagType.STORY)
 }
 
 NPC2_LOCATIONS: Dict[str, DMW2003Flag] = {
@@ -52,7 +56,9 @@ QUEST_LOCATIONS: Dict[str, DMW2003Flag] = {
     "DE Sincerity": DMW2003Flag(15, DMW2003FlagType.QUEST),
     "Beat Fake Byakko Leader": DMW2003Flag(16, DMW2003FlagType.QUEST),
     "Beat Byakko Leader": DMW2003Flag(17, DMW2003FlagType.QUEST),
-    "Beat HiAndromon": DMW2003Flag(18, DMW2003FlagType.QUEST)
+    "Beat HiAndromon": DMW2003Flag(18, DMW2003FlagType.QUEST),
+    "Beat Zhu Que Chief": DMW2003Flag(29, DMW2003FlagType.QUEST),
+    "DE Knowledge": DMW2003Flag(30, DMW2003FlagType.QUEST),
 }
 
 ALL_LOCATIONS_TABLE: Dict[str, DMW2003Flag] ={} 
