@@ -48,9 +48,11 @@ NPC2_LOCATIONS: Dict[str, DMW2003Flag] = {
 
 QUEST_LOCATIONS: Dict[str, DMW2003Flag] = {
     "Beat Seiryu Leader": DMW2003Flag(5, DMW2003FlagType.QUEST),
+    "Beat Suzaku Leader": DMW2003Flag(11, DMW2003FlagType.QUEST),
     "DE Sincerity": DMW2003Flag(15, DMW2003FlagType.QUEST),
     "Beat Fake Byakko Leader": DMW2003Flag(16, DMW2003FlagType.QUEST),
-    "Beat Byakko Leader": DMW2003Flag(17, DMW2003FlagType.QUEST)
+    "Beat Byakko Leader": DMW2003Flag(17, DMW2003FlagType.QUEST),
+    "Beat HiAndromon": DMW2003Flag(18, DMW2003FlagType.QUEST)
 }
 
 ALL_LOCATIONS_TABLE: Dict[str, DMW2003Flag] ={} 

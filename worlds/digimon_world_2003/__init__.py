@@ -68,6 +68,7 @@ class DMW2003World(World):
             get_location("Item Box \"Asuka Jungle Shrine #0\"", self.player, south_sector_2_region),
             # also questionable
             get_location("Item Box \"Asuka Admin Center 2F #0\"", self.player, south_sector_2_region),
+            get_location("Beat Suzaku Leader", self.player, south_sector_2_region),
             get_location("Beat Zanbamon", self.player, south_sector_2_region),
         ])
 
@@ -88,6 +89,8 @@ class DMW2003World(World):
             get_location("Item Box \"Asuka Duct Room 04 #0\"", self.player, west_sector_region),
             get_location("Beat Fake Byakko Leader", self.player, west_sector_region),
             get_location("Beat Byakko Leader", self.player, west_sector_region),
+            get_location("Beat HiAndromon", self.player, west_sector_region),
+            # TODO: decide if I want to add WaruMonzaemon and Ambusher
             get_location("Beat Datamon", self.player, west_sector_region),
         ])
 
