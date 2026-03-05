@@ -52,14 +52,6 @@ class DMW2003Client(BizHawkClient):
 
         return True
 
-
-    def get_timestamp(self, clock_bytes) -> int:
-        hours = int.from_bytes(clock_bytes[0:2], "little")
-        minutes = int.from_bytes(clock_bytes[2:4], "little")
-        seconds = int.from_bytes(clock_bytes[4:6], "little")
-
-        return hours * 3600 + minutes * 60 + seconds
-
     async def game_watcher(self, ctx: "BizHawkClientContext") -> None:
         try:
             clock_bytes, inventory, quest_bytes, stage_id_bytes, item_boxes, story_flags, npc2_flags = await bizhawk.read(
@@ -74,12 +66,15 @@ class DMW2003Client(BizHawkClient):
                     (NPC2_FLAGS, 11, "MainRAM"),
                 ]
             )
-            # timestamp = self.get_timestamp(clock_bytes)
 
             quest = int.from_bytes(quest_bytes, "little")
             stage_id = int.from_bytes(stage_id_bytes, "little")
 
             group_id = stage_id >> 8
+
+            # not fully loaded into game loop
+            if stage_id == 0:
+                return
 
             # skip doing anything if we on main menu / load menu / country select
             if group_id == 22 or group_id == 14 or group_id == 12:
@@ -111,10 +106,6 @@ class DMW2003Client(BizHawkClient):
             # self.last_timestamp = timestamp
             last_awarded_item_index = int.from_bytes(inventory[0:2], "little")
             item_count = len(ctx.items_received)
-
-            # print(f"timestamp: {timestamp}")
-            # print(f"last_awarded_item_index: {last_awarded_item_index}")
-            # print(f"item_count: {item_count}")
 
             if last_awarded_item_index < item_count:
                 for item in ctx.items_received[last_awarded_item_index:]:
