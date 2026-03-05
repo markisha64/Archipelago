@@ -48,6 +48,7 @@ class DMW2003Client(BizHawkClient):
         self.item_boxes = [False for _ in range(8 * 18)]
         self.story_flags = [False for _ in range(8 * 26)]
         self.npc2_flags = [False for _ in range(8 * 11)]
+        self.quest = 0
 
         return True
 
@@ -97,6 +98,15 @@ class DMW2003Client(BizHawkClient):
             checked_locations.extend(check_flag_locations(18, self.item_boxes, item_boxes, DMW2003FlagType.ITEM_BOX))
             checked_locations.extend(check_flag_locations(26, self.story_flags, story_flags, DMW2003FlagType.STORY))
             checked_locations.extend(check_flag_locations(11, self.npc2_flags, npc2_flags, DMW2003FlagType.NPC2))
+
+            if quest > self.quest:
+                for i in range(self.quest, quest + 1):
+                    flag_key = DMW2003Flag(i, DMW2003FlagType.QUEST).to_key()
+
+                    if flag_key in ALL_LOCATIONS_BY_KEY:
+                        checked_locations.append(flag_key)
+
+                self.quest = quest
 
             # self.last_timestamp = timestamp
             last_awarded_item_index = int.from_bytes(inventory[0:2], "little")

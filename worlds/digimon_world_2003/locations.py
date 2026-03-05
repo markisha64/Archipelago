@@ -11,6 +11,7 @@ class DMW2003FlagType(Enum):
     ITEM_BOX = 0
     STORY = 1
     NPC2 = 2
+    QUEST = 3
 
 @dataclass
 class DMW2003Flag:
@@ -42,10 +43,15 @@ NPC2_LOCATIONS: Dict[str, DMW2003Flag] = {
     "Hidden Bits": DMW2003Flag(52, DMW2003FlagType.NPC2),
 }
 
+QUEST_LOCATIONS: Dict[str, DMW2003Flag] = {
+    "Beat Seiryu Leader": DMW2003Flag(5, DMW2003FlagType.QUEST),
+}
+
 ALL_LOCATIONS_TABLE: Dict[str, DMW2003Flag] ={} 
 ALL_LOCATIONS_TABLE.update(ITEM_BOX_LOCATIONS)
 ALL_LOCATIONS_TABLE.update(STORY_LOCATIONS)
 ALL_LOCATIONS_TABLE.update(NPC2_LOCATIONS)
+ALL_LOCATIONS_TABLE.update(QUEST_LOCATIONS)
 
 ALL_LOCATIONS_BY_KEY: Dict[int, DMW2003Flag] = {entry.to_key(): entry for (name, entry) in ALL_LOCATIONS_TABLE.items()}
 
