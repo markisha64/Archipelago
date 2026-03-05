@@ -42,6 +42,7 @@ class DMW2003World(World):
     def create_regions(self):
         east_sector_region = Region("East Sector", self.player, self.multiworld)
         east_sector_region.locations.extend([
+            get_location("Hidden Bits", self.player, east_sector_region),
             get_location("Item Box \"Asuka Asuka Sewers #0\"", self.player, east_sector_region),
             get_location("Item Box \"Asuka Central Park #0\"", self.player, east_sector_region),
             get_location("Item Box \"Asuka West Wire Forest #0\"", self.player, east_sector_region),

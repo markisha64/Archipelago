@@ -15,6 +15,7 @@ QUEST_OFFSET = 0x4b370
 STAGE_ID_OFFSET = 0x4b3f8
 ITEM_BOXES = 0x4b378
 STORY_FLAGS = 0x4b3de
+NPC2_FLAGS = 0x4b3b5
 
 def check_flag_locations(length: int, storage: list[bool], read: bytes, flag_type: DMW2003FlagType) -> list[int]:
     checked = []
@@ -46,6 +47,7 @@ class DMW2003Client(BizHawkClient):
         self.last_timestamp = 0
         self.item_boxes = [False for _ in range(8 * 18)]
         self.story_flags = [False for _ in range(8 * 26)]
+        self.npc2_flags = [False for _ in range(8 * 11)]
 
         return True
 
@@ -59,7 +61,7 @@ class DMW2003Client(BizHawkClient):
 
     async def game_watcher(self, ctx: "BizHawkClientContext") -> None:
         try:
-            clock_bytes, inventory, quest_bytes, stage_id_bytes, item_boxes, story_flags = await bizhawk.read(
+            clock_bytes, inventory, quest_bytes, stage_id_bytes, item_boxes, story_flags, npc2_flags = await bizhawk.read(
                 ctx.bizhawk_ctx,
                 [
                     (CLOCK_OFFSET, 6, "MainRAM"),
@@ -68,6 +70,7 @@ class DMW2003Client(BizHawkClient):
                     (STAGE_ID_OFFSET, 4, "MainRAM"),
                     (ITEM_BOXES, 18, "MainRAM"),
                     (STORY_FLAGS, 26, "MainRAM"),
+                    (NPC2_FLAGS, 11, "MainRAM"),
                 ]
             )
             # timestamp = self.get_timestamp(clock_bytes)
@@ -92,7 +95,8 @@ class DMW2003Client(BizHawkClient):
             checked_locations = []
 
             checked_locations.extend(check_flag_locations(18, self.item_boxes, item_boxes, DMW2003FlagType.ITEM_BOX))
-            checked_locations.extend(check_flag_locations(26, self.story_flags, story_flags, DMW2003FlagType.STORY_FLAG))
+            checked_locations.extend(check_flag_locations(26, self.story_flags, story_flags, DMW2003FlagType.STORY))
+            checked_locations.extend(check_flag_locations(11, self.npc2_flags, npc2_flags, DMW2003FlagType.NPC2))
 
             # self.last_timestamp = timestamp
             last_awarded_item_index = int.from_bytes(inventory[0:2], "little")
