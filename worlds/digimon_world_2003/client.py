@@ -80,7 +80,7 @@ class DMW2003Client(BizHawkClient):
             if group_id == 22 or group_id == 14 or group_id == 12:
                 return
 
-            if not ctx.finished_game and quest == 45 and group_id == 2:
+            if not ctx.finished_game and quest == 45 and stage_id == 727:
                 await ctx.send_msgs([{
                     "cmd": "StatusUpdate",
                     "status": ClientStatus.CLIENT_GOAL
