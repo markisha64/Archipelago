@@ -71,8 +71,29 @@ class DMW2003World(World):
             get_location("Beat Zanbamon", self.player, south_sector_2_region),
         ])
 
+        west_sector_region  = Region("Reliability Spot", self.player, self.multiworld)
+        south_sector_2_region.connect(west_sector_region , "TNT Chip", items_owned_rule(["TNT Chip"]))
+
+        west_sector_region.locations.extend([
+            get_location("DE Sincerity", self.player, west_sector_region),
+            get_location("Item Box \"Asuka Suzaku UG Lake #0\"", self.player, west_sector_region),
+            get_location("Item Box \"Asuka Asuka Sewers #1\"", self.player, west_sector_region),
+            get_location("Item Box \"Asuka North Badland W #0\"", self.player, west_sector_region),
+            get_location("Item Box \"Asuka North Badland W #1\"", self.player, west_sector_region),
+            get_location("Item Box \"Asuka North Badland W #2\"", self.player, west_sector_region),
+            get_location("Item Box \"Asuka North Badland E #0\"", self.player, west_sector_region),
+            get_location("Item Box \"Asuka Duct Room 01 #0\"", self.player, west_sector_region),
+            get_location("Item Box \"Asuka Duct Room 02 #0\"", self.player, west_sector_region),
+            get_location("Item Box \"Asuka Duct Room 03 #0\"", self.player, west_sector_region),
+            get_location("Item Box \"Asuka Duct Room 04 #0\"", self.player, west_sector_region),
+            get_location("Beat Fake Byakko Leader", self.player, west_sector_region),
+            get_location("Beat Byakko Leader", self.player, west_sector_region),
+            get_location("Beat Datamon", self.player, west_sector_region),
+        ])
+
         self.multiworld.regions.extend([
             east_sector_region,
             south_sector_1_region,
-            south_sector_2_region
+            south_sector_2_region,
+            west_sector_region
         ])

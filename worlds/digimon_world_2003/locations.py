@@ -38,7 +38,8 @@ STORY_LOCATIONS: Dict[str, DMW2003Flag] = {
     "Beat Master Tyrannomon": DMW2003Flag(16, DMW2003FlagType.STORY),
     "Beat Pharaohmon": DMW2003Flag(84, DMW2003FlagType.STORY),
     "Beat Keith": DMW2003Flag(22, DMW2003FlagType.STORY),
-    "Beat Zanbamon": DMW2003Flag(86, DMW2003FlagType.STORY)
+    "Beat Zanbamon": DMW2003Flag(86, DMW2003FlagType.STORY),
+    "Beat Datamon": DMW2003Flag(9, DMW2003FlagType.STORY),
 }
 
 NPC2_LOCATIONS: Dict[str, DMW2003Flag] = {
@@ -47,6 +48,9 @@ NPC2_LOCATIONS: Dict[str, DMW2003Flag] = {
 
 QUEST_LOCATIONS: Dict[str, DMW2003Flag] = {
     "Beat Seiryu Leader": DMW2003Flag(5, DMW2003FlagType.QUEST),
+    "DE Sincerity": DMW2003Flag(15, DMW2003FlagType.QUEST),
+    "Beat Fake Byakko Leader": DMW2003Flag(16, DMW2003FlagType.QUEST),
+    "Beat Byakko Leader": DMW2003Flag(17, DMW2003FlagType.QUEST)
 }
 
 ALL_LOCATIONS_TABLE: Dict[str, DMW2003Flag] ={} 
