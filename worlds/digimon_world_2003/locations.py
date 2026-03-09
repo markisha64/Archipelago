@@ -12,6 +12,7 @@ class DMW2003FlagType(Enum):
     STORY = 1
     NPC2 = 2
     QUEST = 3
+    BATTLED_TAMERS = 4
 
 @dataclass
 class DMW2003Flag:
@@ -70,6 +71,10 @@ QUEST_LOCATIONS: Dict[str, DMW2003Flag] = {
     "Beat Genbu Leader": DMW2003Flag(31, DMW2003FlagType.QUEST),
     "Beat Bai Hu Chief": DMW2003Flag(35, DMW2003FlagType.QUEST),
     "Beat Xuan Wu Chief": DMW2003Flag(36, DMW2003FlagType.QUEST),
+}
+
+BATTLED_TAMERS_LOCATIONS: Dict[str, DMW2003Flag] = {
+    "Tamer Natsumi": DMW2003Flag(1, DMW2003FlagType.BATTLED_TAMERS)
 }
 
 ALL_LOCATIONS_TABLE: Dict[str, DMW2003Flag] ={} 

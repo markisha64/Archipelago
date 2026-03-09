@@ -16,6 +16,8 @@ STAGE_ID_OFFSET = 0x4b3f8
 ITEM_BOXES = 0x4b378
 STORY_FLAGS = 0x4b3de
 NPC2_FLAGS = 0x4b3b5
+IN_CUTSCENE = 0x99dd8
+BATTLED_TAMERS_FLAGS = 0x4b39a
 
 def check_flag_locations(length: int, storage: list[bool], read: bytes, flag_type: DMW2003FlagType) -> list[int]:
     checked = []
@@ -48,13 +50,14 @@ class DMW2003Client(BizHawkClient):
         self.item_boxes = [False for _ in range(8 * 18)]
         self.story_flags = [False for _ in range(8 * 26)]
         self.npc2_flags = [False for _ in range(8 * 11)]
+        self.battled_tamers = [False for _ in range(8 * 12)]
         self.quest = 0
 
         return True
 
     async def game_watcher(self, ctx: "BizHawkClientContext") -> None:
         try:
-            clock_bytes, inventory, quest_bytes, stage_id_bytes, item_boxes, story_flags, npc2_flags = await bizhawk.read(
+            clock_bytes, inventory, quest_bytes, stage_id_bytes, item_boxes, story_flags, npc2_flags, in_battle_bytes, battled_tamers = await bizhawk.read(
                 ctx.bizhawk_ctx,
                 [
                     (CLOCK_OFFSET, 6, "MainRAM"),
@@ -64,8 +67,12 @@ class DMW2003Client(BizHawkClient):
                     (ITEM_BOXES, 18, "MainRAM"),
                     (STORY_FLAGS, 26, "MainRAM"),
                     (NPC2_FLAGS, 11, "MainRAM"),
+                    (IN_CUTSCENE, 4, "MainRAM"),
+                    (BATTLED_TAMERS_FLAGS, 12, "MainRAM"),
                 ]
             )
+
+            in_cutscene = int.from_bytes(in_battle_bytes, "little")
 
             quest = int.from_bytes(quest_bytes, "little")
             stage_id = int.from_bytes(stage_id_bytes, "little")
@@ -93,6 +100,10 @@ class DMW2003Client(BizHawkClient):
             checked_locations.extend(check_flag_locations(18, self.item_boxes, item_boxes, DMW2003FlagType.ITEM_BOX))
             checked_locations.extend(check_flag_locations(26, self.story_flags, story_flags, DMW2003FlagType.STORY))
             checked_locations.extend(check_flag_locations(11, self.npc2_flags, npc2_flags, DMW2003FlagType.NPC2))
+
+            # wait till we move back out of battle
+            if not in_cutscene and group_id == 2:
+                checked_locations.extend(check_flag_locations(12, self.battled_tamers, battled_tamers, DMW2003FlagType.BATTLED_TAMERS))
 
             if quest > self.quest:
                 for i in range(self.quest, quest + 1):
