@@ -60,7 +60,7 @@ class DMW2003World(World):
         ])
 
         east_sector_tamers_region = Region("East Sector Tamers", self.player, self.multiworld)
-        east_sector_region.connect(east_sector_tamers_region, "ES Folder Bag", items_owned_rule(["Folder Bag"]))
+        east_sector_region.connect(east_sector_tamers_region, "East Sector + Folder Bag", items_owned_rule(["Folder Bag"]))
         east_sector_tamers_region.locations.extend([
             get_location("Tamer Natsumi", self.player, east_sector_tamers_region),
             get_location("Tamer Genji", self.player, east_sector_tamers_region),
@@ -73,7 +73,7 @@ class DMW2003World(World):
         ])
 
         east_sector_legy_tamers_region = Region("East Sector Legendary Tamers", self.player, self.multiworld)
-        east_sector_tamers_region.connect(east_sector_legy_tamers_region, "ES Asuka Trophy", items_owned_rule(["Asuka Trophy"]))
+        east_sector_tamers_region.connect(east_sector_legy_tamers_region, "East Sector + Folder Bag + Asuka Trophy", items_owned_rule(["Asuka Trophy"]))
         east_sector_legy_tamers_region.locations.extend([
             get_location("Tamer Mitch", self.player, east_sector_legy_tamers_region),  
             get_location("Tamer Bob", self.player, east_sector_legy_tamers_region),  
@@ -86,7 +86,7 @@ class DMW2003World(World):
         ])
 
         south_sector_1_tamers_region = Region("South Sector I Tamers", self.player, self.multiworld)
-        south_sector_1_region.connect(south_sector_1_tamers_region, "SSI Folder Bag", items_owned_rule(["Folder Bag"]))
+        south_sector_1_region.connect(south_sector_1_tamers_region, "South Sector I + Folder Bag", items_owned_rule(["Folder Bag"]))
         south_sector_1_tamers_region.locations.extend([
             get_location("Tamer Andy", self.player, south_sector_1_tamers_region),
             get_location("Tamer George", self.player, south_sector_1_tamers_region),
@@ -94,7 +94,7 @@ class DMW2003World(World):
         ])
 
         south_sector_1_legy_tamers_region = Region("South Sector I Legendary Tamers", self.player, self.multiworld)
-        south_sector_1_tamers_region.connect(south_sector_1_legy_tamers_region, "SSI Asuka Trophy", items_owned_rule(["Asuka Trophy"]))
+        south_sector_1_tamers_region.connect(south_sector_1_legy_tamers_region, "South Sector I + Folder Bag + Asuka Trophy", items_owned_rule(["Asuka Trophy"]))
         south_sector_1_legy_tamers_region.locations.extend([
             get_location("Tamer Jessica", self.player, south_sector_1_legy_tamers_region),
         ])
@@ -110,7 +110,7 @@ class DMW2003World(World):
         ])
 
         south_sector_2_tamers_region = Region("South Sector II Tamers", self.player, self.multiworld)
-        south_sector_2_region.connect(south_sector_2_tamers_region, "SSII Folder Bag", items_owned_rule(["Folder Bag"]))
+        south_sector_2_region.connect(south_sector_2_tamers_region, "South Sector II + Folder Bag", items_owned_rule(["Folder Bag"]))
         south_sector_2_tamers_region.locations.extend([
             get_location("Tamer Gordon", self.player, south_sector_2_tamers_region),
             get_location("Tamer Alice", self.player, south_sector_2_tamers_region),
@@ -140,7 +140,7 @@ class DMW2003World(World):
         ])
 
         west_sector_tamers_region = Region("West Sector Tamers", self.player, self.multiworld)
-        west_sector_region.connect(west_sector_tamers_region, "WS Folder Bag & Asuka Trophy", items_owned_rule([
+        west_sector_region.connect(west_sector_tamers_region, "West Sector + Folder Bag + Asuka Trophy", items_owned_rule([
             "Folder Bag",
             "Asuka Trophy"
         ]))
@@ -243,7 +243,7 @@ class DMW2003World(World):
         ])
 
         north_sector_tamers_region = Region("North Sector Tamers", self.player, self.multiworld)
-        amaterasu_region.connect(north_sector_tamers_region, "NS Folder Bag", items_owned_rule([
+        amaterasu_region.connect(north_sector_tamers_region, "North Sector + Folder Bag", items_owned_rule([
            "Folder Bag",
         ]))
         north_sector_tamers_region.locations.extend([
@@ -251,7 +251,7 @@ class DMW2003World(World):
         ])
         
         north_sector_legy_tamers_s_region = Region("North Sector Legendary Tamers S", self.player, self.multiworld)
-        north_sector_tamers_region.connect(north_sector_legy_tamers_s_region, "NS Sun Trophy", items_owned_rule([
+        north_sector_tamers_region.connect(north_sector_legy_tamers_s_region, "North Sector + Folder Bag + Sun Trophy", items_owned_rule([
            "Sun Trophy",
         ]))
         north_sector_tamers_region.locations.extend([
@@ -263,11 +263,50 @@ class DMW2003World(World):
         ])
 
         north_sector_legy_tamers_a_region = Region("North Sector Legendary Tamers A", self.player, self.multiworld)
-        north_sector_tamers_region.connect(north_sector_legy_tamers_a_region, "NS Asuka Trophy", items_owned_rule([
+        north_sector_tamers_region.connect(north_sector_legy_tamers_a_region, "North Sector + Folder Bag + Asuka Trophy", items_owned_rule([
            "Asuka Trophy",
         ]))
         north_sector_tamers_region.locations.extend([
             get_location("Tamer Mitaka", self.player, north_sector_legy_tamers_a_region),
+        ])
+
+        amaterasu_tamers_region = Region("Amaterasu Tamers", self.player, self.multiworld)
+        amaterasu_region.connect(amaterasu_tamers_region, "Amaterasu + Folder Bag", items_owned_rule(["Folder Bag"]))
+        amaterasu_tamers_region.locations.extend([
+            get_location("Trooper (Central Park)", self.player, amaterasu_tamers_region),
+            get_location("Trooper (West Wire Forest, 1)", self.player, amaterasu_tamers_region),
+            get_location("Trooper (West Wire Forest, 2)", self.player, amaterasu_tamers_region),
+            get_location("Trooper (Wind Prarie)", self.player, amaterasu_tamers_region),
+            get_location("Trooper (Kicking Forest)", self.player, amaterasu_tamers_region),
+            get_location("Trooper (Bulk Swamp)", self.player, amaterasu_tamers_region),
+            get_location("Trooper (Bulk Bridge)", self.player, amaterasu_tamers_region),
+            get_location("Trooper (Tranquil Swamp)", self.player, amaterasu_tamers_region),
+            get_location("Trooper (Zhu Que City, 1)", self.player, amaterasu_tamers_region),
+            get_location("Trooper (Zhu Que City, 2)", self.player, amaterasu_tamers_region),
+            get_location("Trooper (South Badland)", self.player, amaterasu_tamers_region),
+            get_location("Trooper (Noise Desert)", self.player, amaterasu_tamers_region),
+            get_location("Trooper (North Badland W)", self.player, amaterasu_tamers_region),
+            get_location("Trooper (North Badland E)", self.player, amaterasu_tamers_region),
+            get_location("Trooper (S Noise Desert)", self.player, amaterasu_tamers_region),
+            get_location("Trooper (Boot Mountain, 1)", self.player, amaterasu_tamers_region),
+            get_location("Trooper (Boot Mountain, 2)", self.player, amaterasu_tamers_region),
+            get_location("Trooper (Snow Mountain, 1)", self.player, amaterasu_tamers_region),
+            get_location("Trooper (Snow Mountain, 2)", self.player, amaterasu_tamers_region),
+            get_location("Trooper (Freeze Mountain, 1)", self.player, amaterasu_tamers_region),
+            get_location("Trooper (Freeze Mountain, 2)", self.player, amaterasu_tamers_region),
+            get_location("Trooper (Xuan Wu City)", self.player, amaterasu_tamers_region),
+            # other tamers
+            get_location("Tamer Takuya", self.player, amaterasu_tamers_region),
+            get_location("Tamer Murdock", self.player, amaterasu_tamers_region),
+            get_location("Guard Banch", self.player, amaterasu_tamers_region),
+            get_location("Tamer Mai", self.player, amaterasu_tamers_region),
+            get_location("Tamer Gon", self.player, amaterasu_tamers_region),
+        ])
+
+        amaterasu_legy_tamers_region = Region("Amaterasu Legendary Tamers", self.player, self.multiworld)
+        amaterasu_tamers_region.connect(amaterasu_legy_tamers_region, "Amaterasu + Folder Bag + Sun Trophy", items_owned_rule(["Sun Trophy"]))
+        amaterasu_legy_tamers_region.locations.extend([
+            get_location("Tamer Heinrich", self.player, amaterasu_legy_tamers_region),
         ])
 
         self.multiworld.regions.extend([
@@ -282,6 +321,8 @@ class DMW2003World(World):
             west_sector_region,
             west_sector_tamers_region,
             amaterasu_region,
+            amaterasu_tamers_region,
+            amaterasu_legy_tamers_region,
             north_sector_tamers_region,
             north_sector_legy_tamers_a_region,
             north_sector_legy_tamers_s_region

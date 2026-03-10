@@ -98,6 +98,36 @@ BATTLED_TAMERS_LOCATIONS: Dict[str, DMW2003Flag] = {
     "Tamer Brown": DMW2003Flag(21, DMW2003FlagType.BATTLED_TAMERS),
     "Tamer Pierre": DMW2003Flag(22, DMW2003FlagType.BATTLED_TAMERS),
     "Tamer Mitaka": DMW2003Flag(23, DMW2003FlagType.BATTLED_TAMERS),
+    # Troopers
+    "Trooper (Central Park)": DMW2003Flag(27, DMW2003FlagType.BATTLED_TAMERS),
+    "Trooper (West Wire Forest, 1)": DMW2003Flag(28, DMW2003FlagType.BATTLED_TAMERS),
+    "Trooper (West Wire Forest, 2)": DMW2003Flag(29, DMW2003FlagType.BATTLED_TAMERS),
+    "Trooper (Wind Prarie)": DMW2003Flag(30, DMW2003FlagType.BATTLED_TAMERS),
+    "Trooper (Kicking Forest)": DMW2003Flag(31, DMW2003FlagType.BATTLED_TAMERS),
+    "Trooper (Bulk Swamp)": DMW2003Flag(32, DMW2003FlagType.BATTLED_TAMERS),
+    "Trooper (Bulk Bridge)": DMW2003Flag(33, DMW2003FlagType.BATTLED_TAMERS),
+    "Trooper (Tranquil Swamp)": DMW2003Flag(34, DMW2003FlagType.BATTLED_TAMERS),
+    "Trooper (Zhu Que City, 1)": DMW2003Flag(35, DMW2003FlagType.BATTLED_TAMERS),
+    "Trooper (Zhu Que City, 2)": DMW2003Flag(36, DMW2003FlagType.BATTLED_TAMERS),
+    "Trooper (South Badland)": DMW2003Flag(37, DMW2003FlagType.BATTLED_TAMERS),
+    "Trooper (Noise Desert)": DMW2003Flag(38, DMW2003FlagType.BATTLED_TAMERS),
+    "Trooper (North Badland W)": DMW2003Flag(39, DMW2003FlagType.BATTLED_TAMERS),
+    "Trooper (North Badland E)": DMW2003Flag(40, DMW2003FlagType.BATTLED_TAMERS),
+    "Trooper (S Noise Desert)": DMW2003Flag(41, DMW2003FlagType.BATTLED_TAMERS),
+    "Trooper (Boot Mountain, 1)": DMW2003Flag(46, DMW2003FlagType.BATTLED_TAMERS),
+    "Trooper (Boot Mountain, 2)": DMW2003Flag(47, DMW2003FlagType.BATTLED_TAMERS),
+    "Trooper (Snow Mountain, 1)": DMW2003Flag(48, DMW2003FlagType.BATTLED_TAMERS),
+    "Trooper (Snow Mountain, 2)": DMW2003Flag(49, DMW2003FlagType.BATTLED_TAMERS),
+    "Trooper (Freeze Mountain, 1)": DMW2003Flag(50, DMW2003FlagType.BATTLED_TAMERS),
+    "Trooper (Freeze Mountain, 2)": DMW2003Flag(51, DMW2003FlagType.BATTLED_TAMERS),
+    "Trooper (Xuan Wu City)": DMW2003Flag(58, DMW2003FlagType.BATTLED_TAMERS),
+    # Other Amaterasu Tamers
+    "Tamer Heinrich": DMW2003Flag(42, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Takuya": DMW2003Flag(43, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Murdock": DMW2003Flag(44, DMW2003FlagType.BATTLED_TAMERS),
+    "Guard Banch": DMW2003Flag(45, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Mai": DMW2003Flag(52, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Gon": DMW2003Flag(53, DMW2003FlagType.BATTLED_TAMERS),
 }
 
 ALL_LOCATIONS_TABLE: Dict[str, DMW2003Flag] ={} 
@@ -108,6 +138,19 @@ ALL_LOCATIONS_TABLE.update(QUEST_LOCATIONS)
 ALL_LOCATIONS_TABLE.update(BATTLED_TAMERS_LOCATIONS)
 
 ALL_LOCATIONS_BY_KEY: Dict[int, DMW2003Flag] = {entry.to_key(): entry for (name, entry) in ALL_LOCATIONS_TABLE.items()}
+
+# Trooper Mirrors
+ALL_LOCATIONS_BY_KEY[DMW2003Flag(60, DMW2003FlagType.BATTLED_TAMERS).to_key()] = DMW2003Flag(27, DMW2003FlagType.BATTLED_TAMERS)
+ALL_LOCATIONS_BY_KEY[DMW2003Flag(63, DMW2003FlagType.BATTLED_TAMERS).to_key()] = DMW2003Flag(30, DMW2003FlagType.BATTLED_TAMERS)
+ALL_LOCATIONS_BY_KEY[DMW2003Flag(64, DMW2003FlagType.BATTLED_TAMERS).to_key()] = DMW2003Flag(31, DMW2003FlagType.BATTLED_TAMERS)
+ALL_LOCATIONS_BY_KEY[DMW2003Flag(65, DMW2003FlagType.BATTLED_TAMERS).to_key()] = DMW2003Flag(32, DMW2003FlagType.BATTLED_TAMERS)
+ALL_LOCATIONS_BY_KEY[DMW2003Flag(66, DMW2003FlagType.BATTLED_TAMERS).to_key()] = DMW2003Flag(33, DMW2003FlagType.BATTLED_TAMERS)
+ALL_LOCATIONS_BY_KEY[DMW2003Flag(67, DMW2003FlagType.BATTLED_TAMERS).to_key()] = DMW2003Flag(34, DMW2003FlagType.BATTLED_TAMERS)
+ALL_LOCATIONS_BY_KEY[DMW2003Flag(70, DMW2003FlagType.BATTLED_TAMERS).to_key()] = DMW2003Flag(37, DMW2003FlagType.BATTLED_TAMERS)
+ALL_LOCATIONS_BY_KEY[DMW2003Flag(72, DMW2003FlagType.BATTLED_TAMERS).to_key()] = DMW2003Flag(38, DMW2003FlagType.BATTLED_TAMERS)
+ALL_LOCATIONS_BY_KEY[DMW2003Flag(71, DMW2003FlagType.BATTLED_TAMERS).to_key()] = DMW2003Flag(39, DMW2003FlagType.BATTLED_TAMERS)
+ALL_LOCATIONS_BY_KEY[DMW2003Flag(73, DMW2003FlagType.BATTLED_TAMERS).to_key()] = DMW2003Flag(40, DMW2003FlagType.BATTLED_TAMERS)
+ALL_LOCATIONS_BY_KEY[DMW2003Flag(74, DMW2003FlagType.BATTLED_TAMERS).to_key()] = DMW2003Flag(41, DMW2003FlagType.BATTLED_TAMERS)
 
 def get_location(name: str, player: int, parent: Region) -> DMW2003Location:
     location = ALL_LOCATIONS_TABLE[name]
