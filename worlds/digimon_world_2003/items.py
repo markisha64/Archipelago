@@ -42,7 +42,7 @@ ACTUAL_ITEMS: Dict[str, ItemData] = {
 	# "シェンウーÁタグ": ItemData(33, ItemClassification.filler),
 	# "Guilmon DDNA": ItemData(34, ItemClassification.filler),
 	# "Veemon DDNA": ItemData(35, ItemClassification.filler),
-	"Koc Trophy": ItemData(36, ItemClassification.progression),
+	# "Koc Trophy": ItemData(36, ItemClassification.progression),
 	"Platinum Card": ItemData(37, ItemClassification.useful),
 	# "Renamon DDNA": ItemData(38, ItemClassification.filler),
 	# "Patamon DDNA": ItemData(39, ItemClassification.filler),
