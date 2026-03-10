@@ -74,9 +74,9 @@ QUEST_LOCATIONS: Dict[str, DMW2003Flag] = {
 }
 
 BATTLED_TAMERS_LOCATIONS: Dict[str, DMW2003Flag] = {
-    "Tamer Mitch": DMW2003Flag(0, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Genji": DMW2003Flag(0, DMW2003FlagType.BATTLED_TAMERS),
     "Tamer Natsumi": DMW2003Flag(1, DMW2003FlagType.BATTLED_TAMERS),
-    "Tamer Genji": DMW2003Flag(2, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Mitch": DMW2003Flag(2, DMW2003FlagType.BATTLED_TAMERS),
     "Tamer Catherine": DMW2003Flag(3, DMW2003FlagType.BATTLED_TAMERS),
     "Tamer Lucia": DMW2003Flag(4, DMW2003FlagType.BATTLED_TAMERS),
     "Tamer Robert": DMW2003Flag(5, DMW2003FlagType.BATTLED_TAMERS),
