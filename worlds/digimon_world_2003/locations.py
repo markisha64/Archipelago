@@ -74,7 +74,30 @@ QUEST_LOCATIONS: Dict[str, DMW2003Flag] = {
 }
 
 BATTLED_TAMERS_LOCATIONS: Dict[str, DMW2003Flag] = {
-    "Tamer Natsumi": DMW2003Flag(1, DMW2003FlagType.BATTLED_TAMERS)
+    "Tamer Mitch": DMW2003Flag(0, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Natsumi": DMW2003Flag(1, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Genji": DMW2003Flag(2, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Catherine": DMW2003Flag(3, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Lucia": DMW2003Flag(4, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Robert": DMW2003Flag(5, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Akiba": DMW2003Flag(6, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Bob": DMW2003Flag(7, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Tomomi": DMW2003Flag(8, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Chris": DMW2003Flag(9, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Andy": DMW2003Flag(10, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer George": DMW2003Flag(11, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Mei Lin": DMW2003Flag(12, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Jessica": DMW2003Flag(13, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Gordon": DMW2003Flag(14, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Alice": DMW2003Flag(15, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Nakano": DMW2003Flag(16, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Haruka": DMW2003Flag(17, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Poemy": DMW2003Flag(18, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Shingo": DMW2003Flag(19, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Makoto": DMW2003Flag(20, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Brown": DMW2003Flag(21, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Pierre": DMW2003Flag(22, DMW2003FlagType.BATTLED_TAMERS),
+    "Tamer Mitaka": DMW2003Flag(23, DMW2003FlagType.BATTLED_TAMERS),
 }
 
 ALL_LOCATIONS_TABLE: Dict[str, DMW2003Flag] ={} 
@@ -82,6 +105,7 @@ ALL_LOCATIONS_TABLE.update(ITEM_BOX_LOCATIONS)
 ALL_LOCATIONS_TABLE.update(STORY_LOCATIONS)
 ALL_LOCATIONS_TABLE.update(NPC2_LOCATIONS)
 ALL_LOCATIONS_TABLE.update(QUEST_LOCATIONS)
+ALL_LOCATIONS_TABLE.update(BATTLED_TAMERS_LOCATIONS)
 
 ALL_LOCATIONS_BY_KEY: Dict[int, DMW2003Flag] = {entry.to_key(): entry for (name, entry) in ALL_LOCATIONS_TABLE.items()}
 

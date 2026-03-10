@@ -24,9 +24,9 @@ ACTUAL_ITEMS: Dict[str, ItemData] = {
 	# "Agumon Suit": ItemData(15, ItemClassification.filler),
 	# "DE Sincerity": ItemData(16, ItemClassification.filler),
 	# "DE Knowledge": ItemData(17, ItemClassification.filler),
-	"Asuka Trophy": ItemData(18, ItemClassification.useful),
+	"Asuka Trophy": ItemData(18, ItemClassification.progression),
 	# "Kotemon DDNA": ItemData(19, ItemClassification.filler),
-	"Sun Trophy": ItemData(20, ItemClassification.useful),
+	"Sun Trophy": ItemData(20, ItemClassification.progression),
 	"Sepik Mask": ItemData(21, ItemClassification.progression),
 	# "Blue ID Pass": ItemData(22, ItemClassification.filler),
 	# "Red ID Pass": ItemData(23, ItemClassification.filler),
@@ -42,7 +42,7 @@ ACTUAL_ITEMS: Dict[str, ItemData] = {
 	# "シェンウーÁタグ": ItemData(33, ItemClassification.filler),
 	# "Guilmon DDNA": ItemData(34, ItemClassification.filler),
 	# "Veemon DDNA": ItemData(35, ItemClassification.filler),
-	"Koc Trophy": ItemData(36, ItemClassification.useful),
+	"Koc Trophy": ItemData(36, ItemClassification.progression),
 	"Platinum Card": ItemData(37, ItemClassification.useful),
 	# "Renamon DDNA": ItemData(38, ItemClassification.filler),
 	# "Patamon DDNA": ItemData(39, ItemClassification.filler),
@@ -408,7 +408,7 @@ ACTUAL_ITEMS: Dict[str, ItemData] = {
 	# "8lue Card": ItemData(399, ItemClassification.filler),
 	# "リカバリーCD3": ItemData(400, ItemClassification.filler),
 	"Staff Pass": ItemData(401, ItemClassification.progression),
-	"Folder Bag": ItemData(402, ItemClassification.useful)
+	"Folder Bag": ItemData(402, ItemClassification.progression)
 }
 
 ALL_ITEMS_TABLE: Dict[str, ItemData] = {}
