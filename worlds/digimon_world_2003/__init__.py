@@ -65,7 +65,6 @@ class DMW2003World(World):
             get_location("Beat Keith", self.player, east_sector_region),
         ])
 
-
         south_sector_1_region = Region("South Sector I", self.player, self.multiworld)
         east_sector_region.connect(south_sector_1_region, "Blue Card", items_owned_rule(["Blue Card"]))
         south_sector_1_region.locations.extend([
@@ -272,7 +271,7 @@ class DMW2003World(World):
             north_sector_tamers_region.connect(north_sector_legy_tamers_s_region, "North Sector + Folder Bag + Sun Trophy", items_owned_rule([
                "Sun Trophy",
             ]))
-            north_sector_tamers_region.locations.extend([
+            north_sector_legy_tamers_s_region.locations.extend([
                 get_location("Tamer Haruka", self.player, north_sector_legy_tamers_s_region),
                 get_location("Tamer Poemy", self.player, north_sector_legy_tamers_s_region),
                 get_location("Tamer Pierre", self.player, north_sector_legy_tamers_s_region),
@@ -284,7 +283,7 @@ class DMW2003World(World):
             north_sector_tamers_region.connect(north_sector_legy_tamers_a_region, "North Sector + Folder Bag + Asuka Trophy", items_owned_rule([
                "Asuka Trophy",
             ]))
-            north_sector_tamers_region.locations.extend([
+            north_sector_legy_tamers_a_region.locations.extend([
                 get_location("Tamer Mitaka", self.player, north_sector_legy_tamers_a_region),
             ])
 
