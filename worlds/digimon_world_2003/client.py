@@ -56,6 +56,9 @@ class DMW2003Client(BizHawkClient):
         return True
 
     async def game_watcher(self, ctx: "BizHawkClientContext") -> None:
+        if ctx.server is None or ctx.server.socket.closed or ctx.slot_data is None:
+            return
+
         try:
             clock_bytes, inventory, quest_bytes, stage_id_bytes, item_boxes, story_flags, npc2_flags, in_battle_bytes, battled_tamers = await bizhawk.read(
                 ctx.bizhawk_ctx,
@@ -122,7 +125,7 @@ class DMW2003Client(BizHawkClient):
                 for item in ctx.items_received[last_awarded_item_index:]:
                     update_list[item.item] = inventory[item.item] + 1
 
-            # # locations
+            # locations
             if checked_locations:
                 print(checked_locations)
                 await ctx.send_msgs([{
