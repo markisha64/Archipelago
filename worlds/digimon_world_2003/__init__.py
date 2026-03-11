@@ -2,7 +2,7 @@
 from typing import Dict
 from worlds.AutoWorld import WebWorld, World
 from BaseClasses import Item, ItemClassification, Region
-from .items import ALL_ITEMS_TABLE,DMW2003Item
+from .items import NON_FILLER,NON_BUYABLE_FILLER, BUYABLE_FILLER,DMW2003Item,ALL_ITEMS_TABLE
 from .locations import get_location, ALL_LOCATIONS_TABLE
 from .rules import items_owned_rule_gen
 from .client import DMW2003Client
@@ -29,7 +29,13 @@ class DMW2003World(World):
     topology_present = True
 
     def create_items(self):
-        self.multiworld.itempool += [self.create_item(name) for name in ALL_ITEMS_TABLE.keys()]
+        self.multiworld.itempool += [self.create_item(name) for name in NON_FILLER.keys()]
+
+        self.multiworld.itempool += [self.create_item(name) for name in BUYABLE_FILLER.keys()]
+
+        # if option sellable
+        if self.options.filler_item_pool.value == 1:
+            self.multiworld.itempool += [self.create_item(name) for name in NON_BUYABLE_FILLER.keys()]
 
         # game softlocks if you try training without Silver ID after East Sector
         self.multiworld.get_location("Beat Seiryu Leader", self.player).place_locked_item(self.create_item("Silver ID"))
