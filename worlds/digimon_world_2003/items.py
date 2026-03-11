@@ -18,8 +18,7 @@ NON_FILLER: Dict[str, ItemData] = {
 	"Asuka Trophy": ItemData(18, ItemClassification.progression_skip_balancing),
 	"Sun Trophy": ItemData(20, ItemClassification.progression_skip_balancing),
 	"Sepik Mask": ItemData(21, ItemClassification.progression_skip_balancing),
-	"Platinum Card": ItemData(37, ItemClassification.useful),
-	"Silver ID": ItemData(40, ItemClassification.progression_skip_balancing),
+	# "Platinum Card": ItemData(37, ItemClassification.useful),
 	"Gold ID": ItemData(41, ItemClassification.useful),
 	"Platinum ID": ItemData(42, ItemClassification.useful),
 	"EXP Adapter": ItemData(321, ItemClassification.useful),
@@ -419,7 +418,10 @@ NON_BUYABLE_FILLER: Dict[str, ItemData] = {
     "Dark Power S": ItemData(359, ItemClassification.filler),
 }
 
-ALL_ITEMS_TABLE: Dict[str, ItemData] = {}
+ALL_ITEMS_TABLE: Dict[str, ItemData] = {
+    # yeah :)
+	"Silver ID": ItemData(40, ItemClassification.progression),
+}
 ALL_ITEMS_TABLE.update(NON_FILLER)
 ALL_ITEMS_TABLE.update(BUYABLE_FILLER)
 ALL_ITEMS_TABLE.update(NON_BUYABLE_FILLER)
