@@ -23,7 +23,7 @@ class DMW2003World(World):
     filler_list = [k for k, v in ALL_ITEMS_TABLE.items() if v.classification & ItemClassification.filler != 0]
     region_cache: Dict[int, Region] = {}
 
-    options = DMW2003Options
+    options: DMW2003Options
     options_dataclass = DMW2003Options
 
     topology_present = True
