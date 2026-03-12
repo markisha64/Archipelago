@@ -1,7 +1,7 @@
 
 from typing import Dict
 from worlds.AutoWorld import WebWorld, World
-from BaseClasses import Item, ItemClassification, Region
+from BaseClasses import Item, ItemClassification, Region, Tutorial
 from .items import NON_FILLER,NON_BUYABLE_FILLER, BUYABLE_FILLER,DMW2003Item,ALL_ITEMS_TABLE
 from .locations import get_location, ALL_LOCATIONS_TABLE
 from .rules import items_owned_rule_gen
@@ -12,7 +12,15 @@ class DMW2003WebWorld(WebWorld):
     option_groups = []
     rich_text_options_doc = True
     theme = "grass"
-    tutorials = []
+    setup_en = Tutorial(
+        "Multiworld Setup Guide",
+        f"A guide to playing Digimon World 2003 with Archipelago.",
+        "English",
+        "setup_en.md",
+        "setup/en",
+        ["markisha64"]
+    )
+    tutorials = [setup_en]
 
 class DMW2003World(World):
     origin_region_name = "East Sector"
