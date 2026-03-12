@@ -20,7 +20,7 @@ class DMW2003World(World):
     web = DMW2003WebWorld()
     item_name_to_id = {k: v.id for k, v in ALL_ITEMS_TABLE.items()}
     location_name_to_id = {k: v.to_key() for k, v in ALL_LOCATIONS_TABLE.items()}
-    filler_list = [k for k, v in ALL_ITEMS_TABLE.items() if v.classification & ItemClassification.filler != 0]
+    filler_list = [k for k, v in ALL_ITEMS_TABLE.items() if v.classification == ItemClassification.filler]
     region_cache: Dict[int, Region] = {}
 
     options: DMW2003Options
