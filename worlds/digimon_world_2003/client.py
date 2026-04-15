@@ -18,6 +18,7 @@ STORY_FLAGS = 0x4b3de
 NPC2_FLAGS = 0x4b3b5
 IN_CUTSCENE = 0x99dd8
 BATTLED_TAMERS_FLAGS = 0x4b39a
+AUCTION_FLAGS = 0x4b38a
 
 def check_flag_locations(length: int, storage: list[bool], read: bytes, flag_type: DMW2003FlagType) -> list[int]:
     checked = []
@@ -51,6 +52,7 @@ class DMW2003Client(BizHawkClient):
         self.story_flags = [False for _ in range(8 * 26)]
         self.npc2_flags = [False for _ in range(8 * 11)]
         self.battled_tamers = [False for _ in range(8 * 12)]
+        self.auctions = [False for _ in range(8 * 2)]
         self.quest = 0
 
         return True
@@ -60,7 +62,7 @@ class DMW2003Client(BizHawkClient):
             return
 
         try:
-            clock_bytes, inventory, quest_bytes, stage_id_bytes, item_boxes, story_flags, npc2_flags, in_battle_bytes, battled_tamers = await bizhawk.read(
+            clock_bytes, inventory, quest_bytes, stage_id_bytes, item_boxes, story_flags, npc2_flags, in_battle_bytes, battled_tamers, auctions = await bizhawk.read(
                 ctx.bizhawk_ctx,
                 [
                     (CLOCK_OFFSET, 6, "MainRAM"),
@@ -72,6 +74,7 @@ class DMW2003Client(BizHawkClient):
                     (NPC2_FLAGS, 11, "MainRAM"),
                     (IN_CUTSCENE, 4, "MainRAM"),
                     (BATTLED_TAMERS_FLAGS, 12, "MainRAM"),
+                    (AUCTION_FLAGS, 2, "MainRAM"),
                 ]
             )
 
@@ -103,6 +106,7 @@ class DMW2003Client(BizHawkClient):
             checked_locations.extend(check_flag_locations(18, self.item_boxes, item_boxes, DMW2003FlagType.ITEM_BOX))
             checked_locations.extend(check_flag_locations(26, self.story_flags, story_flags, DMW2003FlagType.STORY))
             checked_locations.extend(check_flag_locations(11, self.npc2_flags, npc2_flags, DMW2003FlagType.NPC2))
+            checked_locations.extend(check_flag_locations(2, self.auctions, auctions, DMW2003FlagType.AUCTION))
 
             # wait till we move back out of battle
             if not in_cutscene and group_id == 2:
