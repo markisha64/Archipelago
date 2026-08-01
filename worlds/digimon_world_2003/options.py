@@ -15,7 +15,13 @@ class IncludeTamerLocations(Toggle):
     display_name = "Tamer Locations"
     default = 1
 
+class IncludeDRILocations(Toggle):
+    """Include DRI locations (fight ultimates)"""
+    display_name = "DRI Locations"
+    default = 1
+
 @dataclass
 class DMW2003Options(PerGameCommonOptions):
     filler_item_pool: FillerItemPool
     include_tamer_locations: IncludeTamerLocations
+    include_dri_locations: IncludeDRILocations

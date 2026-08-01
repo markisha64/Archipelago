@@ -217,6 +217,22 @@ class DMW2003World(World):
         if self.options.include_tamer_locations.value == 1:
             self.create_tamer_regions()
 
+        if self.options.include_dri_locations.value == 1:
+            self.create_dri_regions()
+
+    def create_dri_regions(self):
+        west_sector_region = self.get_region("West Sector")
+        west_sector_region.locations.extend([
+            get_location("MetalGreymon", self.player, west_sector_region),
+            get_location("Armormon", self.player, west_sector_region),
+            get_location("Paildramon", self.player, west_sector_region),
+            get_location("WarGrowlmon", self.player, west_sector_region),
+            get_location("MagnaAngemon", self.player, west_sector_region),
+            get_location("Taomon", self.player, west_sector_region),
+            get_location("Kyukimon", self.player, west_sector_region),
+            get_location("GrapLeomon", self.player, west_sector_region),
+        ])
+
     def create_tamer_regions(self):
         items_owned_rule = items_owned_rule_gen(self.player)
 

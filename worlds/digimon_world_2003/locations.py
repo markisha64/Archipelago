@@ -58,6 +58,14 @@ STORY_LOCATIONS: Dict[str, DMW2003Flag] = {
 
 NPC2_LOCATIONS: Dict[str, DMW2003Flag] = {
     "Hidden Bits": DMW2003Flag(52, DMW2003FlagType.NPC2),
+    "MetalGreymon": DMW2003Flag(18, DMW2003FlagType.NPC2),
+    "Armormon": DMW2003Flag(23, DMW2003FlagType.NPC2),
+    "Paildramon": DMW2003Flag(25, DMW2003FlagType.NPC2),
+    "WarGrowlmon": DMW2003Flag(38, DMW2003FlagType.NPC2),
+    "MagnaAngemon": DMW2003Flag(39, DMW2003FlagType.NPC2),
+    "Taomon": DMW2003Flag(40, DMW2003FlagType.NPC2),
+    "Kyukimon": DMW2003Flag(41, DMW2003FlagType.NPC2),
+    "GrapLeomon": DMW2003Flag(43, DMW2003FlagType.NPC2),
 }
 
 QUEST_LOCATIONS: Dict[str, DMW2003Flag] = {
@@ -131,7 +139,7 @@ BATTLED_TAMERS_LOCATIONS: Dict[str, DMW2003Flag] = {
     "Tamer Gon": DMW2003Flag(53, DMW2003FlagType.BATTLED_TAMERS),
 }
 
-AUCTION_LOCATIONS: Dict[str, DMW2003Flag] = {f"Auction #{i}" for i in range(16)}
+AUCTION_LOCATIONS: Dict[str, DMW2003Flag] = {f"Auction #{i}": DMW2003Flag(i, DMW2003FlagType.AUCTION) for i in range(16)}
 
 ALL_LOCATIONS_TABLE: Dict[str, DMW2003Flag] ={} 
 ALL_LOCATIONS_TABLE.update(ITEM_BOX_LOCATIONS)
