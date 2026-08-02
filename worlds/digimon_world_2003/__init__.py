@@ -224,16 +224,24 @@ class DMW2003World(World):
             self.create_dri_regions()
 
     def create_dri_regions(self):
+        south_sector_1_region = self.get_region("South Sector I")
+        south_sector_1_region.locations.extend([
+            get_location("Beat MetalGreymon", self.player, south_sector_1_region),
+        ])
+
+        south_sector_2_region = self.get_region("South Sector II")
+        south_sector_2_region.locations.extend([
+            get_location("Beat WarGrowlmon", self.player, south_sector_2_region),
+        ])
+
         west_sector_region = self.get_region("West Sector")
         west_sector_region.locations.extend([
-            get_location("MetalGreymon", self.player, west_sector_region),
-            get_location("Armormon", self.player, west_sector_region),
-            get_location("Paildramon", self.player, west_sector_region),
-            get_location("WarGrowlmon", self.player, west_sector_region),
-            get_location("MagnaAngemon", self.player, west_sector_region),
-            get_location("Taomon", self.player, west_sector_region),
-            get_location("Kyukimon", self.player, west_sector_region),
-            get_location("GrapLeomon", self.player, west_sector_region),
+            get_location("Beat MagnaAngemon", self.player, west_sector_region),
+            get_location("Beat Taomon", self.player, west_sector_region),
+            get_location("Beat Armormon", self.player, west_sector_region),
+            get_location("Beat Paildramon", self.player, west_sector_region),
+            get_location("Beat Kyukimon", self.player, west_sector_region),
+            get_location("Beat GrapLeomon", self.player, west_sector_region),
         ])
 
     def create_tamer_regions(self):
