@@ -82,15 +82,20 @@ class DMW2003World(World):
         south_sector_2_region = Region("South Sector II", self.player, self.multiworld)
         south_sector_1_region.connect(south_sector_2_region, "Sepik Mask", items_owned_rule(["Sepik Mask"]))
         south_sector_2_region.locations.extend([
-            get_location("Item Box \"Asuka Jungle Shrine #0\"", self.player, south_sector_2_region),
-            # also questionable
-            get_location("Item Box \"Asuka Admin Center 2F #0\"", self.player, south_sector_2_region),
             get_location("Beat Suzaku Leader", self.player, south_sector_2_region),
             get_location("Beat Zanbamon", self.player, south_sector_2_region),
+            get_location("Item Box \"Asuka Jungle Shrine #0\"", self.player, south_sector_2_region),
+        ])
+
+        south_sector_3_region = Region("South Sector III", self.player, self.multiworld)
+        south_sector_2_region.connect(south_sector_3_region, "Agumon Suit", items_owned_rule(["Agumon Suit"]))
+        south_sector_3_region.locations.extend([
+            get_location("Item Box \"Asuka Admin Center 2F #0\"", self.player, south_sector_2_region),
+            get_location("Item Box \"Asuka Asuka City #1\"", self.player, south_sector_2_region),
         ])
 
         west_sector_region = Region("West Sector", self.player, self.multiworld)
-        south_sector_2_region.connect(west_sector_region , "TNT Chip", items_owned_rule(["TNT Chip"]))
+        south_sector_3_region.connect(west_sector_region , "TNT Chip", items_owned_rule(["TNT Chip"]))
 
         west_sector_region.locations.extend([
             get_location("DE Sincerity", self.player, west_sector_region),
@@ -121,7 +126,6 @@ class DMW2003World(World):
             get_location("Item Box \"Asuka Admin Center B1F #1\"", self.player, amaterasu_region),
             get_location("Item Box \"Asuka Admin Center B1F #2\"", self.player, amaterasu_region),
             get_location("Item Box \"Asuka Asuka City #0\"", self.player, amaterasu_region),
-            get_location("Item Box \"Asuka Asuka City #1\"", self.player, amaterasu_region),
             # Bug Maze
             get_location("Item Box \"Asuka Bug Maze #0\"", self.player, amaterasu_region),
             get_location("Item Box \"Asuka Bug Maze #1\"", self.player, amaterasu_region),
@@ -178,7 +182,6 @@ class DMW2003World(World):
             get_location("Item Box \"Amaterasu Admin Center B1F #1\"", self.player, amaterasu_region),
             # empty box
             # get_location("Item Box \"Amaterasu Admin Center B1F #2\"", self.player, amaterasu_region), 
-            # get_location("Item Box \"Asuka Admin Center 2F #0\"", self.player, south_sector_2_region),
             # Digmon only boxes
             get_location("Item Box \"Asuka Kicking Forest #0\"", self.player, amaterasu_region),
             get_location("Item Box \"Amaterasu Kicking Forest #0\"", self.player, amaterasu_region),
