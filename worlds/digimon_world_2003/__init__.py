@@ -38,7 +38,10 @@ class DMW2003World(World):
     topology_present = True
 
     def create_items(self):
-        filler: List[Item] = []
+        # game softlocks if you try training without Silver ID after East Sector
+        self.multiworld.get_location("Beat Seiryu Leader", self.player).place_locked_item(self.create_item("Silver ID"))
+
+        filler = []
 
         self.multiworld.itempool += [self.create_item(name) for name in NON_FILLER.keys()]
 
@@ -50,10 +53,7 @@ class DMW2003World(World):
 
         random.shuffle(filler)
 
-        self.multiworld.itempool += filler[:len(self.location_id_to_name)]
-
-        # game softlocks if you try training without Silver ID after East Sector
-        self.multiworld.get_location("Beat Seiryu Leader", self.player).place_locked_item(self.create_item("Silver ID"))
+        self.multiworld.itempool += filler[:len(self.multiworld.get_unfilled_locations(self.player))]
 
     def create_item(self, name: str) -> Item:
         item = ALL_ITEMS_TABLE[name]
