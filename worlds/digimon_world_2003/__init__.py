@@ -7,6 +7,7 @@ from .locations import get_location, ALL_LOCATIONS_TABLE
 from .rules import items_owned_rule_gen
 from .client import DMW2003Client
 from .options import DMW2003Options
+import random
 
 class DMW2003WebWorld(WebWorld):
     option_groups = []
@@ -37,13 +38,19 @@ class DMW2003World(World):
     topology_present = True
 
     def create_items(self):
+        filler: List[Item] = []
+
         self.multiworld.itempool += [self.create_item(name) for name in NON_FILLER.keys()]
 
-        self.multiworld.itempool += [self.create_item(name) for name in BUYABLE_FILLER.keys()]
+        filler += [self.create_item(name) for name in BUYABLE_FILLER.keys()]
 
         # if option sellable
         if self.options.filler_item_pool.value == 1:
-            self.multiworld.itempool += [self.create_item(name) for name in NON_BUYABLE_FILLER.keys()]
+            filler += [self.create_item(name) for name in NON_BUYABLE_FILLER.keys()]
+
+        random.shuffle(filler)
+
+        self.multiworld.itempool += filler[:len(self.location_id_to_name)]
 
         # game softlocks if you try training without Silver ID after East Sector
         self.multiworld.get_location("Beat Seiryu Leader", self.player).place_locked_item(self.create_item("Silver ID"))
@@ -213,6 +220,7 @@ class DMW2003World(World):
             east_sector_region,
             south_sector_1_region,
             south_sector_2_region,
+            south_sector_3_region,
             west_sector_region,
             amaterasu_region,
         ])
