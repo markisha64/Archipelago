@@ -142,9 +142,9 @@ BATTLED_TAMERS_LOCATIONS: Dict[str, DMW2003Flag] = {
 }
 
 UNK6_LOCATIONS: Dict[str, DMW2003Flag] = {
-    "Zhu Que Leader": DMW2003Flag(14, DMW2003FlagType.UNK6)
-    "Bai Hu Leader": DMW2003Flag(15, DMW2003FlagType.UNK6)
-    "Qing Long Leader": DMW2003Flag(16, DMW2003FlagType.UNK6)
+    "Zhu Que Leader": DMW2003Flag(14, DMW2003FlagType.UNK6),
+    "Bai Hu Leader": DMW2003Flag(15, DMW2003FlagType.UNK6),
+    "Qing Long Leader": DMW2003Flag(16, DMW2003FlagType.UNK6),
     "Xuan Wu Leader": DMW2003Flag(17, DMW2003FlagType.UNK6)
 } 
 
@@ -157,6 +157,7 @@ ALL_LOCATIONS_TABLE.update(NPC2_LOCATIONS)
 ALL_LOCATIONS_TABLE.update(QUEST_LOCATIONS)
 ALL_LOCATIONS_TABLE.update(BATTLED_TAMERS_LOCATIONS)
 ALL_LOCATIONS_TABLE.update(AUCTION_LOCATIONS)
+ALL_LOCATIONS_TABLE.update(UNK6_LOCATIONS)
 
 ALL_LOCATIONS_BY_KEY: Dict[int, DMW2003Flag] = {entry.to_key(): entry for (name, entry) in ALL_LOCATIONS_TABLE.items()}
 
