@@ -19,6 +19,7 @@ NPC2_FLAGS = 0x4b3b5
 IN_CUTSCENE = 0x99dd8
 BATTLED_TAMERS_FLAGS = 0x4b39a
 AUCTION_FLAGS = 0x4b38a
+UNK6_FLAGS = 0x4b3a6
 
 def check_flag_locations(length: int, storage: list[bool], read: bytes, flag_type: DMW2003FlagType) -> list[int]:
     checked = []
@@ -53,6 +54,7 @@ class DMW2003Client(BizHawkClient):
         self.npc2_flags = [False for _ in range(8 * 11)]
         self.battled_tamers = [False for _ in range(8 * 12)]
         self.auctions = [False for _ in range(8 * 2)]
+        self.unk6 = [False for _ in range(8 * 4)]
         self.quest = 0
 
         return True
@@ -62,7 +64,7 @@ class DMW2003Client(BizHawkClient):
             return
 
         try:
-            clock_bytes, inventory, quest_bytes, stage_id_bytes, item_boxes, story_flags, npc2_flags, in_battle_bytes, battled_tamers, auctions = await bizhawk.read(
+            clock_bytes, inventory, quest_bytes, stage_id_bytes, item_boxes, story_flags, npc2_flags, in_battle_bytes, battled_tamers, auctions, unk6_bytes = await bizhawk.read(
                 ctx.bizhawk_ctx,
                 [
                     (CLOCK_OFFSET, 6, "MainRAM"),
@@ -75,6 +77,7 @@ class DMW2003Client(BizHawkClient):
                     (IN_CUTSCENE, 4, "MainRAM"),
                     (BATTLED_TAMERS_FLAGS, 12, "MainRAM"),
                     (AUCTION_FLAGS, 2, "MainRAM"),
+                    (UNK6_FLAGS, 4, "MainRAM"),
                 ]
             )
 
@@ -111,6 +114,7 @@ class DMW2003Client(BizHawkClient):
             # wait till we move back out of battle
             if not in_cutscene and group_id == 2:
                 checked_locations.extend(check_flag_locations(12, self.battled_tamers, battled_tamers, DMW2003FlagType.BATTLED_TAMERS))
+                checked_locations.extend(check_flag_locations(4, self.unk6, unk6_bytes, DMW2003FlagType.UNK6))
 
             if quest > self.quest:
                 for i in range(self.quest, quest + 1):

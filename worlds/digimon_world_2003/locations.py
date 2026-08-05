@@ -14,6 +14,7 @@ class DMW2003FlagType(Enum):
     QUEST = 3
     BATTLED_TAMERS = 4
     AUCTION = 5
+    UNK6 = 6
 
 @dataclass
 class DMW2003Flag:
@@ -139,6 +140,13 @@ BATTLED_TAMERS_LOCATIONS: Dict[str, DMW2003Flag] = {
     "Tamer Mai": DMW2003Flag(52, DMW2003FlagType.BATTLED_TAMERS),
     "Tamer Gon": DMW2003Flag(53, DMW2003FlagType.BATTLED_TAMERS),
 }
+
+UNK6_LOCATIONS: Dict[str, DMW2003Flag] = {
+    "Zhu Que Leader": DMW2003Flag(14, DMW2003FlagType.UNK6)
+    "Bai Hu Leader": DMW2003Flag(15, DMW2003FlagType.UNK6)
+    "Qing Long Leader": DMW2003Flag(16, DMW2003FlagType.UNK6)
+    "Xuan Wu Leader": DMW2003Flag(17, DMW2003FlagType.UNK6)
+} 
 
 AUCTION_LOCATIONS: Dict[str, DMW2003Flag] = {f"Auction #{i}": DMW2003Flag(i, DMW2003FlagType.AUCTION) for i in range(16)}
 
