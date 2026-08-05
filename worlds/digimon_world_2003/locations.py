@@ -35,7 +35,7 @@ item_boxes_json_path = importlib.resources.files(__package__).joinpath("item_box
 with open(item_boxes_json_path, "r") as file:
     item_boxes_json = json.load(file)
 
-ITEM_BOX_LOCATIONS: Dict[str, DMW2003Flag] = {f"Item Box \"{entry["server"]} {entry["name"]} #{entry["i"]}\"": DMW2003Flag(entry["flag"], DMW2003FlagType.ITEM_BOX)  for entry in item_boxes_json}
+ITEM_BOX_LOCATIONS: Dict[str, DMW2003Flag] = {f"Item Box \"{entry['server']} {entry['name']} #{entry['i']}\"": DMW2003Flag(entry["flag"], DMW2003FlagType.ITEM_BOX)  for entry in item_boxes_json}
 
 STORY_LOCATIONS: Dict[str, DMW2003Flag] = {
     "Beat Master Tyrannomon": DMW2003Flag(16, DMW2003FlagType.STORY),
