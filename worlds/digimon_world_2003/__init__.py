@@ -3,7 +3,7 @@ from typing import Dict
 from worlds.AutoWorld import WebWorld, World
 from BaseClasses import Item, ItemClassification, Region, Tutorial
 from .items import NON_FILLER,NON_BUYABLE_FILLER, BUYABLE_FILLER,DMW2003Item,ALL_ITEMS_TABLE
-from .locations import get_location, ALL_LOCATIONS_TABLE
+from .locations import get_location, get_beat_galacticmon, ALL_LOCATIONS_TABLE
 from .rules import items_owned_rule_gen
 from .client import DMW2003Client
 from .options import DMW2003Options
@@ -41,6 +41,10 @@ class DMW2003World(World):
         # game softlocks if you try training without Silver ID after East Sector
         self.multiworld.get_location("Beat Seiryu Leader", self.player).place_locked_item(self.create_item("Silver ID"))
 
+        # game completion
+        saved_the_world = DMW2003Item("Saved the world", ItemClassification.progression, None, self.player)
+        self.multiworld.get_location("Beat Galacticmon", self.player).place_locked_item(saved_the_world)
+
         filler = []
 
         self.multiworld.itempool += [self.create_item(name) for name in NON_FILLER.keys()]
@@ -53,7 +57,8 @@ class DMW2003World(World):
 
         random.shuffle(filler)
 
-        self.multiworld.itempool += filler[:len(self.multiworld.get_unfilled_locations(self.player))]
+        left_to_fill = len(self.multiworld.get_unfilled_locations(self.player)) - len(NON_FILLER)
+        self.multiworld.itempool += filler[:left_to_fill]
 
     def create_item(self, name: str) -> Item:
         item = ALL_ITEMS_TABLE[name]
@@ -62,6 +67,9 @@ class DMW2003World(World):
 
     def get_filler_item_name(self):
         return self.random.choice(self.filler_list)
+
+    def set_rules(self) -> None:
+        self.multiworld.completion_condition[self.player] = lambda state: state.has("Saved the world", self.player)
 
     def create_regions(self):
         items_owned_rule = items_owned_rule_gen(self.player)
@@ -214,6 +222,8 @@ class DMW2003World(World):
             get_location("Item Box \"Asuka Magasta B2F #2\"", self.player, amaterasu_region),
             # get_location("Item Box \"Asuka Magasta B2F #3\"", self.player, amaterasu_region),
             get_location("Item Box \"Asuka Magasta B2F #4\"", self.player, amaterasu_region),
+            # game completion
+            get_beat_galacticmon(self.player, amaterasu_region)
         ])
 
         self.multiworld.regions.extend([

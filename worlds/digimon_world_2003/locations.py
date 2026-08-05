@@ -80,6 +80,7 @@ QUEST_LOCATIONS: Dict[str, DMW2003Flag] = {
     "Beat Genbu Leader": DMW2003Flag(31, DMW2003FlagType.QUEST),
     "Beat Bai Hu Chief": DMW2003Flag(35, DMW2003FlagType.QUEST),
     "Beat Xuan Wu Chief": DMW2003Flag(36, DMW2003FlagType.QUEST),
+    "Beat Galacticmon": DMW2003Flag(45, DMW2003FlagType.QUEST)
 }
 
 BATTLED_TAMERS_LOCATIONS: Dict[str, DMW2003Flag] = {
@@ -168,3 +169,6 @@ def get_location(name: str, player: int, parent: Region) -> DMW2003Location:
     location = ALL_LOCATIONS_TABLE[name]
     
     return DMW2003Location(player, name, location.to_key(), parent)
+
+def get_beat_galacticmon(player: int, parent: Region) -> DMW2003Location:
+    return DMW2003Location(player, "Beat Galacticmon", None, parent)
