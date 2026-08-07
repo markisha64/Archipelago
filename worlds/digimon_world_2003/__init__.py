@@ -52,8 +52,11 @@ class DMW2003World(World):
         filler += [self.create_item(name) for name in BUYABLE_FILLER.keys()]
 
         # if option sellable
-        if self.options.filler_item_pool.value == 1:
+        if self.options.filler_item_pool.value:
             filler += [self.create_item(name) for name in NON_BUYABLE_FILLER.keys()]
+
+        if self.options.place_folder_bag_early:
+            self.multiworld.local_early_items[self.player]["Folder Bag"] = 1
 
         random.shuffle(filler)
 

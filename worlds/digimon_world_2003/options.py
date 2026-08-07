@@ -20,8 +20,14 @@ class IncludeDRILocations(Toggle):
     display_name = "DRI Locations"
     default = 1
 
+class PlaceFolderBagEarly(Toggle):
+    """Makes it more fun (should play with lower charisma)"""
+    display_name = "Place Folder Bag Early"
+    default = 1
+
 @dataclass
 class DMW2003Options(PerGameCommonOptions):
     filler_item_pool: FillerItemPool
     include_tamer_locations: IncludeTamerLocations
     include_dri_locations: IncludeDRILocations
+    place_folder_bag_early: PlaceFolderBagEarly
