@@ -103,7 +103,6 @@ class DMW2003Client(BizHawkClient):
                 }])
                 ctx.finished_game = True
 
-            update_list = {}
             checked_locations = []
 
             # wait till we move back out of battle
@@ -124,14 +123,6 @@ class DMW2003Client(BizHawkClient):
 
                     self.quest = quest
 
-            # self.last_timestamp = timestamp
-            last_awarded_item_index = int.from_bytes(inventory[0:2], "little")
-            item_count = len(ctx.items_received)
-
-            if last_awarded_item_index < item_count:
-                for item in ctx.items_received[last_awarded_item_index:]:
-                    update_list[item.item] = inventory[item.item] + 1
-
             # locations
             if checked_locations:
                 await ctx.send_msgs([{
@@ -139,23 +130,39 @@ class DMW2003Client(BizHawkClient):
                     "locations": checked_locations 
                 }])
 
-            # update inventory
-            writes = [(
-                INVENTORY_OFFSET + i,
-                v.to_bytes(1, "little"),
-                "MainRAM"
-            ) for i, v in update_list.items()]            
+            writes = []
+            guards = []
 
-            # update last awarded index
+            # self.last_timestamp = timestamp
+            last_awarded_item_index = int.from_bytes(inventory[0:2], "little")
+            item_count = len(ctx.items_received)
+
             if last_awarded_item_index < item_count:
+                for item in ctx.items_received[last_awarded_item_index:]:
+                    writes.append((
+                        INVENTORY_OFFSET + item.item,
+                        inventory[item.item] + 1,
+                        "MainRAM"
+                    ))
+                    guards.append((
+                        INVENTORY_OFFSET + item.item,
+                        inventory[item.item],
+                        "MainRAM"
+                    ))
+
+                # update last awarded index
                 writes.append((
                     INVENTORY_OFFSET,
                     item_count.to_bytes(2, "little"),
                     "MainRAM"
                 ))
+                guards.append((
+                    INVENTORY_OFFSET,
+                    last_awarded_item_index.to_bytes(2, "little"),
+                    "MainRAM"
+                ))
 
-            if writes:
-                await bizhawk.write(ctx.bizhawk_ctx, writes)
+                await bizhawk.guarded_write(ctx.bizhawk_ctx, writes, guards)
 
         except bizhawk.RequestFailedError:
             # The connector didn't respond. Exit handler and return to main loop to reconnect
