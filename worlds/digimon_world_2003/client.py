@@ -106,24 +106,23 @@ class DMW2003Client(BizHawkClient):
             update_list = {}
             checked_locations = []
 
-            checked_locations.extend(check_flag_locations(18, self.item_boxes, item_boxes, DMW2003FlagType.ITEM_BOX))
-            checked_locations.extend(check_flag_locations(26, self.story_flags, story_flags, DMW2003FlagType.STORY))
-            checked_locations.extend(check_flag_locations(11, self.npc2_flags, npc2_flags, DMW2003FlagType.NPC2))
-            checked_locations.extend(check_flag_locations(2, self.auctions, auctions, DMW2003FlagType.AUCTION))
-
             # wait till we move back out of battle
             if not in_cutscene and group_id == 2:
+                checked_locations.extend(check_flag_locations(18, self.item_boxes, item_boxes, DMW2003FlagType.ITEM_BOX))
+                checked_locations.extend(check_flag_locations(26, self.story_flags, story_flags, DMW2003FlagType.STORY))
+                checked_locations.extend(check_flag_locations(11, self.npc2_flags, npc2_flags, DMW2003FlagType.NPC2))
+                checked_locations.extend(check_flag_locations(2, self.auctions, auctions, DMW2003FlagType.AUCTION))
                 checked_locations.extend(check_flag_locations(12, self.battled_tamers, battled_tamers, DMW2003FlagType.BATTLED_TAMERS))
                 checked_locations.extend(check_flag_locations(4, self.unk6, unk6_bytes, DMW2003FlagType.UNK6))
 
-            if quest > self.quest:
-                for i in range(self.quest, quest + 1):
-                    flag_key = DMW2003Flag(i, DMW2003FlagType.QUEST).to_key()
+                if quest > self.quest:
+                    for i in range(self.quest, quest + 1):
+                        flag_key = DMW2003Flag(i, DMW2003FlagType.QUEST).to_key()
 
-                    if flag_key in ALL_LOCATIONS_BY_KEY:
-                        checked_locations.append(flag_key)
+                        if flag_key in ALL_LOCATIONS_BY_KEY:
+                            checked_locations.append(flag_key)
 
-                self.quest = quest
+                    self.quest = quest
 
             # self.last_timestamp = timestamp
             last_awarded_item_index = int.from_bytes(inventory[0:2], "little")
