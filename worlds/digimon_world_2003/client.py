@@ -134,7 +134,6 @@ class DMW2003Client(BizHawkClient):
 
             # locations
             if checked_locations:
-                print(checked_locations)
                 await ctx.send_msgs([{
                     "cmd": "LocationChecks",
                     "locations": checked_locations 
