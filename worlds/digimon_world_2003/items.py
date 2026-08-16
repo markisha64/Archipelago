@@ -13,7 +13,7 @@ class ItemData(NamedTuple):
 NON_FILLER: Dict[str, ItemData] = {
 	"Tree Boots": ItemData(4, ItemClassification.useful),
 	"Fishing Pole": ItemData(5, ItemClassification.useful),
-	"El Dorado ID": ItemData(8, ItemClassification.useful),
+	"El Dorado ID": ItemData(8, ItemClassification.progression_skip_balancing),
 	"TNT Chip": ItemData(14, ItemClassification.progression_skip_balancing),
     "Agumon Suit": ItemData(15, ItemClassification.progression_skip_balancing),
 	"Asuka Trophy": ItemData(18, ItemClassification.progression_skip_balancing),

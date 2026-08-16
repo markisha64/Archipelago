@@ -4,7 +4,7 @@ from worlds.AutoWorld import WebWorld, World
 from BaseClasses import Item, ItemClassification, Region, Tutorial
 from .items import NON_FILLER,NON_BUYABLE_FILLER, BUYABLE_FILLER,DMW2003Item,ALL_ITEMS_TABLE
 from .locations import get_location, get_beat_galacticmon, ALL_LOCATIONS_TABLE
-from .rules import items_owned_rule_gen
+from .rules import items_owned_rule_gen, items_owned_rule
 from .client import DMW2003Client
 from .options import DMW2003Options
 import random
@@ -57,6 +57,9 @@ class DMW2003World(World):
 
         if self.options.place_folder_bag_early:
             self.multiworld.local_early_items[self.player]["Folder Bag"] = 1
+
+        if self.options.place_el_dorado_id_early:
+            self.multiworld.local_early_items[self.player]["El Dorado ID"] = 1
 
         random.shuffle(filler)
 
@@ -238,11 +241,14 @@ class DMW2003World(World):
             amaterasu_region,
         ])
 
-        if self.options.include_tamer_locations.value == 1:
+        if self.options.include_tamer_locations.value:
             self.create_tamer_regions()
 
-        if self.options.include_dri_locations.value == 1:
+        if self.options.include_dri_locations.value:
             self.create_dri_regions()
+
+        if self.options.include_auction_locations:
+            self.create_auction_regions()
 
     def create_dri_regions(self):
         south_sector_1_region = self.get_region("South Sector I")
@@ -263,6 +269,60 @@ class DMW2003World(World):
             get_location("Beat Paildramon", self.player, west_sector_region),
             get_location("Beat Kyukimon", self.player, west_sector_region),
             get_location("Beat GrapLeomon", self.player, west_sector_region),
+        ])
+
+    def create_auction_regions(self):
+        has_el_dorado_id = items_owned_rule(["El Dorado ID"], self.player)
+
+        east_sector_region = self.get_region("East Sector")
+
+        east_sector_auctions_region = Region("East Sector Auctions", self.player, self.multiworld)
+        east_sector_region.connect(east_sector_auctions_region, "East Sector + El Dorado ID", has_el_dorado_id)
+        east_sector_auctions_region.locations.extend([
+            get_location("Auction #0", self.player, east_sector_auctions_region)
+        ])
+
+        south_sector_1_region = self.get_region("South Sector I")
+
+        south_sector_1_auctions_region = Region("South Sector I Auctions", self.player, self.multiworld)
+        south_sector_1_region.connect(south_sector_1_auctions_region, "South Sector I + El Dorado ID", has_el_dorado_id)
+        south_sector_1_auctions_region.locations.extend([
+            get_location("Auction #1", self.player, south_sector_1_auctions_region)
+        ])
+
+        south_sector_3_region = self.get_region("South Sector III")
+
+        south_sector_3_auctions_region = Region("South Sector III Auctions", self.player, self.multiworld)
+        south_sector_3_region.connect(south_sector_3_auctions_region, "South Sector III + El Dorado ID", has_el_dorado_id)
+        south_sector_3_auctions_region.locations.extend([
+            get_location("Auction #2", self.player, south_sector_3_auctions_region)
+        ])
+
+        west_sector_region = self.get_region("West Sector")
+
+        west_sector_auctions_region = Region("West Sector Auctions", self.player, self.multiworld)
+        west_sector_region.connect(west_sector_auctions_region, "West Sector + El Dorado ID", has_el_dorado_id)
+        west_sector_auctions_region.locations.extend([
+            get_location("Auction #3", self.player, west_sector_auctions_region),
+            get_location("Auction #4", self.player, west_sector_auctions_region),
+        ])
+
+        amaterasu_region = self.get_region("Amaterasu")
+
+        amaterasu_auctions_region = Region("Amaterasu Auctions", self.player, self.multiworld)
+        amaterasu_region.connect(amaterasu_auctions_region, "Amaterasu + El Dorado ID", has_el_dorado_id)
+        amaterasu_auctions_region.locations.extend([
+            get_location("Auction #5", self.player, amaterasu_auctions_region),
+            get_location("Auction #6", self.player, amaterasu_auctions_region),
+            get_location("Auction #7", self.player, amaterasu_auctions_region),
+            get_location("Auction #8", self.player, amaterasu_auctions_region),
+            get_location("Auction #9", self.player, amaterasu_auctions_region),
+            get_location("Auction #10", self.player, amaterasu_auctions_region),
+            get_location("Auction #11", self.player, amaterasu_auctions_region),
+            get_location("Auction #12", self.player, amaterasu_auctions_region),
+            get_location("Auction #13", self.player, amaterasu_auctions_region),
+            get_location("Auction #14", self.player, amaterasu_auctions_region),
+            get_location("Auction #15", self.player, amaterasu_auctions_region),
         ])
 
     def create_tamer_regions(self):
