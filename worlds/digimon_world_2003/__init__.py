@@ -325,6 +325,14 @@ class DMW2003World(World):
             get_location("Auction #15", self.player, amaterasu_auctions_region),
         ])
 
+        self.multiworld.regions.extend([
+            east_sector_auctions_region,
+            south_sector_1_auctions_region,
+            south_sector_3_auctions_region,
+            west_sector_auctions_region,
+            amaterasu_auctions_region
+        ])
+
     def create_tamer_regions(self):
         items_owned_rule = items_owned_rule_gen(self.player)
 
