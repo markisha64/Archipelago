@@ -134,6 +134,8 @@ class DMW2003World(World):
             get_location("Beat Fake Byakko Leader", self.player, west_sector_region),
             get_location("Beat Byakko Leader", self.player, west_sector_region),
             get_location("Beat HiAndromon", self.player, west_sector_region),
+            get_location("Beat WaruMonzaemon", self.player, west_sector_region),
+            get_location("Beat A.o.A Ambusher", self.player, west_sector_region),
             # TODO: decide if I want to add WaruMonzaemon and Ambusher
             get_location("Beat Datamon", self.player, west_sector_region),
         ])
@@ -147,6 +149,7 @@ class DMW2003World(World):
             get_location("Item Box \"Asuka Admin Center B1F #1\"", self.player, amaterasu_region),
             get_location("Item Box \"Asuka Admin Center B1F #2\"", self.player, amaterasu_region),
             get_location("Item Box \"Asuka Asuka City #0\"", self.player, amaterasu_region),
+            get_location("Beat Game Master", self.player, amaterasu_region),
             # Bug Maze
             get_location("Item Box \"Asuka Bug Maze #0\"", self.player, amaterasu_region),
             get_location("Item Box \"Asuka Bug Maze #1\"", self.player, amaterasu_region),
@@ -201,6 +204,7 @@ class DMW2003World(World):
             get_location("Item Box \"Amaterasu Admin Center 1F #0\"", self.player, amaterasu_region),
             get_location("Item Box \"Amaterasu Admin Center B1F #0\"", self.player, amaterasu_region),
             get_location("Item Box \"Amaterasu Admin Center B1F #1\"", self.player, amaterasu_region),
+            get_location("Beat Magami President", self.player, amaterasu_region),
             # empty box
             # get_location("Item Box \"Amaterasu Admin Center B1F #2\"", self.player, amaterasu_region), 
             # Digmon only boxes
