@@ -90,7 +90,6 @@ class DMW2003World(World):
             get_location("Beat Master Tyrannomon", self.player, east_sector_region),
             get_location("Beat Pharaohmon", self.player, east_sector_region),
             get_location("Beat Seiryu Leader", self.player, east_sector_region),
-            # keith is questionable since hes missable
             get_location("Beat Keith", self.player, east_sector_region),
         ])
 
@@ -136,7 +135,6 @@ class DMW2003World(World):
             get_location("Beat HiAndromon", self.player, west_sector_region),
             get_location("Beat WaruMonzaemon", self.player, west_sector_region),
             get_location("Beat A.o.A Ambusher", self.player, west_sector_region),
-            # TODO: decide if I want to add WaruMonzaemon and Ambusher
             get_location("Beat Datamon", self.player, west_sector_region),
         ])
 
