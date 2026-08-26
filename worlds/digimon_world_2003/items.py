@@ -13,20 +13,20 @@ class ItemData(NamedTuple):
 NON_FILLER: Dict[str, ItemData] = {
 	"Tree Boots": ItemData(4, ItemClassification.useful),
 	"Fishing Pole": ItemData(5, ItemClassification.useful),
-	"El Dorado ID": ItemData(8, ItemClassification.progression_skip_balancing),
-	"TNT Chip": ItemData(14, ItemClassification.progression_skip_balancing),
-    "Agumon Suit": ItemData(15, ItemClassification.progression_skip_balancing),
-	"Asuka Trophy": ItemData(18, ItemClassification.progression_skip_balancing),
-	"Sun Trophy": ItemData(20, ItemClassification.progression_skip_balancing),
-	"Sepik Mask": ItemData(21, ItemClassification.progression_skip_balancing),
+	"El Dorado ID": ItemData(8, ItemClassification.progression),
+	"TNT Chip": ItemData(14, ItemClassification.progression),
+    "Agumon Suit": ItemData(15, ItemClassification.progression),
+	"Asuka Trophy": ItemData(18, ItemClassification.progression),
+	"Sun Trophy": ItemData(20, ItemClassification.progression),
+	"Sepik Mask": ItemData(21, ItemClassification.progression),
 	# "Platinum Card": ItemData(37, ItemClassification.useful),
 	"Gold ID": ItemData(41, ItemClassification.useful),
 	"Platinum ID": ItemData(42, ItemClassification.useful),
 	"EXP Adapter": ItemData(321, ItemClassification.useful),
 	"BIT Adapter": ItemData(322, ItemClassification.useful),
-	"Blue Card": ItemData(398, ItemClassification.progression_skip_balancing),
-	"Staff Pass": ItemData(401, ItemClassification.progression_skip_balancing),
-	"Folder Bag": ItemData(402, ItemClassification.progression_skip_balancing)
+	"Blue Card": ItemData(398, ItemClassification.progression),
+	"Staff Pass": ItemData(401, ItemClassification.progression),
+	"Folder Bag": ItemData(402, ItemClassification.progression)
 }
 
 # "Agumon DDNA": ItemData(6, ItemClassification.filler),
