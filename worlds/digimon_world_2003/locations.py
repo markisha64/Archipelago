@@ -64,11 +64,11 @@ NPC2_LOCATIONS: Dict[str, DMW2003Flag] = {
     "Beat MetalGreymon": DMW2003Flag(18, DMW2003FlagType.NPC2),
     "Beat Armormon": DMW2003Flag(23, DMW2003FlagType.NPC2),
     "Beat Paildramon": DMW2003Flag(25, DMW2003FlagType.NPC2),
-    "Beat WarGrowlmon": DMW2003Flag(38, DMW2003FlagType.NPC2),
-    "Beat MagnaAngemon": DMW2003Flag(39, DMW2003FlagType.NPC2),
-    "Beat Taomon": DMW2003Flag(40, DMW2003FlagType.NPC2),
-    "Beat Kyukimon": DMW2003Flag(41, DMW2003FlagType.NPC2),
-    "Beat GrapLeomon": DMW2003Flag(43, DMW2003FlagType.NPC2),
+    "Beat WarGrowlmon": DMW2003Flag(19, DMW2003FlagType.NPC2),
+    "Beat MagnaAngemon": DMW2003Flag(20, DMW2003FlagType.NPC2),
+    "Beat Taomon": DMW2003Flag(21, DMW2003FlagType.NPC2),
+    "Beat Kyukimon": DMW2003Flag(22, DMW2003FlagType.NPC2),
+    "Beat GrapLeomon": DMW2003Flag(24, DMW2003FlagType.NPC2),
 }
 
 QUEST_LOCATIONS: Dict[str, DMW2003Flag] = {
