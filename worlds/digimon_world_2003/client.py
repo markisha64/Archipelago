@@ -20,6 +20,7 @@ IN_CUTSCENE = 0x99dd8
 BATTLED_TAMERS_FLAGS = 0x4b39a
 AUCTION_FLAGS = 0x4b38a
 UNK6_FLAGS = 0x4b3a6
+BOSSES_FLAGS = 0x4b38e
 
 def check_flag_locations(length: int, storage: list[bool], read: bytes, flag_type: DMW2003FlagType) -> list[int]:
     checked = []
@@ -55,6 +56,7 @@ class DMW2003Client(BizHawkClient):
         self.battled_tamers = [False for _ in range(8 * 12)]
         self.auctions = [False for _ in range(8 * 2)]
         self.unk6 = [False for _ in range(8 * 4)]
+        self.bosses = [False for _ in range(8 * 4)]
         self.quest = 0
 
         return True
@@ -64,7 +66,7 @@ class DMW2003Client(BizHawkClient):
             return
 
         try:
-            clock_bytes, inventory, quest_bytes, stage_id_bytes, item_boxes, story_flags, npc2_flags, in_battle_bytes, battled_tamers, auctions, unk6_bytes = await bizhawk.read(
+            clock_bytes, inventory, quest_bytes, stage_id_bytes, item_boxes, story_flags, npc2_flags, in_battle_bytes, battled_tamers, auctions, unk6_bytes, bosses_bytes = await bizhawk.read(
                 ctx.bizhawk_ctx,
                 [
                     (CLOCK_OFFSET, 6, "MainRAM"),
@@ -78,6 +80,7 @@ class DMW2003Client(BizHawkClient):
                     (BATTLED_TAMERS_FLAGS, 12, "MainRAM"),
                     (AUCTION_FLAGS, 2, "MainRAM"),
                     (UNK6_FLAGS, 4, "MainRAM"),
+                    (BOSSES_FLAGS, 4, "MainRAM"),
                 ]
             )
 
@@ -114,6 +117,7 @@ class DMW2003Client(BizHawkClient):
                 checked_locations.extend(check_flag_locations(2, self.auctions, auctions, DMW2003FlagType.AUCTION))
                 checked_locations.extend(check_flag_locations(12, self.battled_tamers, battled_tamers, DMW2003FlagType.BATTLED_TAMERS))
                 checked_locations.extend(check_flag_locations(4, self.unk6, unk6_bytes, DMW2003FlagType.UNK6))
+                checked_locations.extend(check_flag_locations(4, self.bosses, bosses_bytes, DMW2003FlagType.BOSSES))
 
                 if quest > self.quest:
                     for i in range(self.quest, quest + 1):

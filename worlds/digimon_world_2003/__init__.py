@@ -153,6 +153,7 @@ class DMW2003World(World):
             get_location("Item Box \"Asuka Bug Maze #1\"", self.player, amaterasu_region),
             get_location("Item Box \"Asuka Bug Maze #2\"", self.player, amaterasu_region),
             get_location("Item Box \"Asuka Bug Maze Pit #0\"", self.player, amaterasu_region),
+            get_location("Beat Bulbmon", self.player, amaterasu_region),
             # AM Pre DE Knowledge
             get_location("Beat BK MegaGargomon", self.player, amaterasu_region),
             get_location("Item Box \"Amaterasu Divermon's Lake #0\"", self.player, amaterasu_region),

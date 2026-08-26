@@ -15,6 +15,7 @@ class DMW2003FlagType(Enum):
     BATTLED_TAMERS = 4
     AUCTION = 5
     UNK6 = 6
+    BOSSES = 7
 
 @dataclass
 class DMW2003Flag:
@@ -38,25 +39,29 @@ with open(item_boxes_json_path, "r") as file:
 ITEM_BOX_LOCATIONS: Dict[str, DMW2003Flag] = {f"Item Box \"{entry['server']} {entry['name']} #{entry['i']}\"": DMW2003Flag(entry["flag"], DMW2003FlagType.ITEM_BOX)  for entry in item_boxes_json}
 
 STORY_LOCATIONS: Dict[str, DMW2003Flag] = {
-    "Beat Master Tyrannomon": DMW2003Flag(16, DMW2003FlagType.STORY),
-    "Beat Pharaohmon": DMW2003Flag(84, DMW2003FlagType.STORY),
     "Beat Keith": DMW2003Flag(22, DMW2003FlagType.STORY),
     "Beat Game Master": DMW2003Flag(80, DMW2003FlagType.STORY),
-    "Beat Zanbamon": DMW2003Flag(86, DMW2003FlagType.STORY),
     "Beat Magami President": DMW2003Flag(95, DMW2003FlagType.STORY),
-    "Beat Datamon": DMW2003Flag(9, DMW2003FlagType.STORY),
-    "Beat BK MegaGargomon": DMW2003Flag(121, DMW2003FlagType.STORY),
-    "Beat BK Imperialdramon": DMW2003Flag(123, DMW2003FlagType.STORY),
     "Beat Qing Long Chief": DMW2003Flag(167, DMW2003FlagType.STORY),
-    "Beat BK Seraphimon": DMW2003Flag(125, DMW2003FlagType.STORY),
-    "Beat BK WarGrowlmon": DMW2003Flag(127, DMW2003FlagType.STORY),
-    "Beat BK KingNumemon": DMW2003Flag(129, DMW2003FlagType.STORY),
     "Beat Ice Witch": DMW2003Flag(25, DMW2003FlagType.STORY),
     "Beat Fire Knight": DMW2003Flag(64, DMW2003FlagType.STORY),
     "Beat Dark Knight": DMW2003Flag(66, DMW2003FlagType.STORY),
     "Beat Ice Master": DMW2003Flag(131, DMW2003FlagType.STORY),
     "Beat Fire Master": DMW2003Flag(133, DMW2003FlagType.STORY),
     "Beat Dark Master": DMW2003Flag(135, DMW2003FlagType.STORY),
+}
+
+BOSSES_LOCATIONS: Dict[str,DMW2003Flag] = {
+    "Beat Pharaohmon": DMW2003Flag(0, DMW2003FlagType.BOSSES),
+    "Beat Master Tyrannomon": DMW2003Flag(1, DMW2003FlagType.BOSSES),
+    "Beat Zanbamon": DMW2003Flag(2, DMW2003FlagType.BOSSES),
+    "Beat Datamon": DMW2003Flag(3, DMW2003FlagType.BOSSES),
+    "Beat HiAndromon": DMW2003Flag(4, DMW2003FlagType.BOSSES),
+    "Beat BK MegaGargomon": DMW2003Flag(7, DMW2003FlagType.BOSSES),
+    "Beat BK Imperialdramon": DMW2003Flag(9, DMW2003FlagType.BOSSES),
+    "Beat BK Seraphimon": DMW2003Flag(10, DMW2003FlagType.BOSSES),
+    "Beat BK WarGrowlmon": DMW2003Flag(11, DMW2003FlagType.BOSSES),
+    "Beat BK KingNumemon": DMW2003Flag(12, DMW2003FlagType.BOSSES),
 }
 
 NPC2_LOCATIONS: Dict[str, DMW2003Flag] = {
@@ -77,9 +82,9 @@ QUEST_LOCATIONS: Dict[str, DMW2003Flag] = {
     "DE Sincerity": DMW2003Flag(15, DMW2003FlagType.QUEST),
     "Beat Fake Byakko Leader": DMW2003Flag(16, DMW2003FlagType.QUEST),
     "Beat Byakko Leader": DMW2003Flag(17, DMW2003FlagType.QUEST),
-    "Beat HiAndromon": DMW2003Flag(18, DMW2003FlagType.QUEST),
     "Beat WaruMonzaemon": DMW2003Flag(19, DMW2003FlagType.QUEST),
     "Beat A.o.A Ambusher": DMW2003Flag(20, DMW2003FlagType.QUEST),
+    "Beat Bulbmon": DMW2003Flag(27, DMW2003FlagType.QUEST),
     "Beat Zhu Que Chief": DMW2003Flag(29, DMW2003FlagType.QUEST),
     "DE Knowledge": DMW2003Flag(30, DMW2003FlagType.QUEST),
     "Beat Genbu Leader": DMW2003Flag(31, DMW2003FlagType.QUEST),
@@ -157,6 +162,7 @@ AUCTION_LOCATIONS: Dict[str, DMW2003Flag] = {f"Auction #{i}": DMW2003Flag(i, DMW
 ALL_LOCATIONS_TABLE: Dict[str, DMW2003Flag] ={} 
 ALL_LOCATIONS_TABLE.update(ITEM_BOX_LOCATIONS)
 ALL_LOCATIONS_TABLE.update(STORY_LOCATIONS)
+ALL_LOCATIONS_TABLE.update(BOSSES_LOCATIONS)
 ALL_LOCATIONS_TABLE.update(NPC2_LOCATIONS)
 ALL_LOCATIONS_TABLE.update(QUEST_LOCATIONS)
 ALL_LOCATIONS_TABLE.update(BATTLED_TAMERS_LOCATIONS)
