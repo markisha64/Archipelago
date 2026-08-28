@@ -95,16 +95,16 @@ class DMW2003Client(BizHawkClient):
             if stage_id == 0:
                 return
 
-            # skip doing anything if we on main menu / load menu / country select
-            if group_id == 22 or group_id == 14 or group_id == 12:
-                return
-
-            if not ctx.finished_game and quest == 45 and stage_id == 727:
+            if not ctx.finished_game and quest == 43 and stage_id == 727:
                 await ctx.send_msgs([{
                     "cmd": "StatusUpdate",
                     "status": ClientStatus.CLIENT_GOAL
                 }])
                 ctx.finished_game = True
+
+            # skip doing anything if we on main menu / load menu / country select
+            if group_id == 22 or group_id == 14 or group_id == 12:
+                return
 
             update_list = {}
             checked_locations = []
