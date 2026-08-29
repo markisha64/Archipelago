@@ -110,8 +110,7 @@ class DMW2003World(World):
         south_sector_3_region = Region("South Sector III", self.player, self.multiworld)
         south_sector_2_region.connect(south_sector_3_region, "Agumon Suit", items_owned_rule(["Agumon Suit"]))
         south_sector_3_region.locations.extend([
-            get_location("Item Box \"Asuka Admin Center 2F #0\"", self.player, south_sector_2_region),
-            get_location("Item Box \"Asuka Asuka City #1\"", self.player, south_sector_2_region),
+            get_location("Item Box \"Asuka Admin Center 2F #0\"", self.player, south_sector_3_region),
         ])
 
         west_sector_region = Region("West Sector", self.player, self.multiworld)
@@ -147,6 +146,7 @@ class DMW2003World(World):
             get_location("Item Box \"Asuka Admin Center B1F #1\"", self.player, amaterasu_region),
             get_location("Item Box \"Asuka Admin Center B1F #2\"", self.player, amaterasu_region),
             get_location("Item Box \"Asuka Asuka City #0\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Asuka City #1\"", self.player, amaterasu_region),
             get_location("Beat Game Master", self.player, amaterasu_region),
             # Bug Maze
             get_location("Item Box \"Asuka Bug Maze #0\"", self.player, amaterasu_region),
