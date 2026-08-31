@@ -220,24 +220,6 @@ class DMW2003World(World):
             get_location("Item Box \"Amaterasu Admin Center B1F #0\"", self.player, amaterasu_2_region),
             get_location("Item Box \"Amaterasu Admin Center B1F #1\"", self.player, amaterasu_2_region),
             get_location("Beat Magami President", self.player, amaterasu_2_region),
-            # Magasta B1F (commented empty boxes)
-            get_location("Item Box \"Asuka Magasta B1F #0\"", self.player, amaterasu_2_region),
-            # get_location("Item Box \"Asuka Magasta B1F #1\"", self.player, amaterasu_region),
-            get_location("Item Box \"Asuka Magasta B1F #2\"", self.player, amaterasu_2_region),
-            # get_location("Item Box \"Asuka Magasta B1F #3\"", self.player, amaterasu_region),
-            # get_location("Item Box \"Asuka Magasta B1F #4\"", self.player, amaterasu_region),
-            get_location("Item Box \"Asuka Magasta B1F #5\"", self.player, amaterasu_2_region),
-            get_location("Item Box \"Asuka Magasta B1F #6\"", self.player, amaterasu_2_region),
-            # get_location("Item Box \"Asuka Magasta B1F #7\"", self.player, amaterasu_region),
-            get_location("Item Box \"Asuka Magasta B1F #8\"", self.player, amaterasu_2_region),
-            get_location("Item Box \"Asuka Magasta B1F #9\"", self.player, amaterasu_2_region),
-            get_location("Item Box \"Asuka Magasta B1F #10\"", self.player, amaterasu_2_region),
-            # Magasta B2F (commented empty boxes)
-            get_location("Item Box \"Asuka Magasta B2F #0\"", self.player, amaterasu_2_region),
-            get_location("Item Box \"Asuka Magasta B2F #1\"", self.player, amaterasu_2_region),
-            get_location("Item Box \"Asuka Magasta B2F #2\"", self.player, amaterasu_2_region),
-            # get_location("Item Box \"Asuka Magasta B2F #3\"", self.player, amaterasu_region),
-            get_location("Item Box \"Asuka Magasta B2F #4\"", self.player, amaterasu_2_region),
             # game completion
             get_beat_galacticmon(self.player, amaterasu_2_region)
         ])
@@ -350,6 +332,30 @@ class DMW2003World(World):
             west_sector_auctions_region,
             amaterasu_1_auctions,
             amaterasu_2_auctions
+        ])
+
+    def create_magasta_regions(self):
+        amaterasu_2_region = self.get_region("Amaterasu II")
+
+        amaterasu_2_region.extend([
+            # Magasta B1F (commented empty boxes)
+            get_location("Item Box \"Asuka Magasta B1F #0\"", self.player, amaterasu_2_region),
+            # get_location("Item Box \"Asuka Magasta B1F #1\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Magasta B1F #2\"", self.player, amaterasu_2_region),
+            # get_location("Item Box \"Asuka Magasta B1F #3\"", self.player, amaterasu_region),
+            # get_location("Item Box \"Asuka Magasta B1F #4\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Magasta B1F #5\"", self.player, amaterasu_2_region),
+            get_location("Item Box \"Asuka Magasta B1F #6\"", self.player, amaterasu_2_region),
+            # get_location("Item Box \"Asuka Magasta B1F #7\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Magasta B1F #8\"", self.player, amaterasu_2_region),
+            get_location("Item Box \"Asuka Magasta B1F #9\"", self.player, amaterasu_2_region),
+            get_location("Item Box \"Asuka Magasta B1F #10\"", self.player, amaterasu_2_region),
+            # Magasta B2F (commented empty boxes)
+            get_location("Item Box \"Asuka Magasta B2F #0\"", self.player, amaterasu_2_region),
+            get_location("Item Box \"Asuka Magasta B2F #1\"", self.player, amaterasu_2_region),
+            get_location("Item Box \"Asuka Magasta B2F #2\"", self.player, amaterasu_2_region),
+            # get_location("Item Box \"Asuka Magasta B2F #3\"", self.player, amaterasu_region),
+            get_location("Item Box \"Asuka Magasta B2F #4\"", self.player, amaterasu_2_region),
         ])
 
     def create_tamer_regions(self):

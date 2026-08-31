@@ -35,6 +35,11 @@ class PlaceElDoradoIDEarly(Toggle):
     display_name = "Place El Dorado ID Early"
     default = 1
 
+class IncludeMagastaLocations(Toggle):
+    """Include Magasta locations"""
+    display_name = "Magasta Locations"
+    default = 1
+
 @dataclass
 class DMW2003Options(PerGameCommonOptions):
     filler_item_pool: FillerItemPool
@@ -43,4 +48,5 @@ class DMW2003Options(PerGameCommonOptions):
     include_dri_locations: IncludeDRILocations
     include_auction_locations: IncludeAuctionLocations
     place_el_dorado_id_early: PlaceElDoradoIDEarly
+    include_magasta_locations: IncludeMagastaLocations
 
