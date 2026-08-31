@@ -14,6 +14,7 @@ NON_FILLER: Dict[str, ItemData] = {
 	"Tree Boots": ItemData(4, ItemClassification.useful),
 	"Fishing Pole": ItemData(5, ItemClassification.useful),
 	"El Dorado ID": ItemData(8, ItemClassification.progression),
+    "Genbu Badge": ItemData(12, ItemClassification.progression),
 	"TNT Chip": ItemData(14, ItemClassification.progression),
     "Agumon Suit": ItemData(15, ItemClassification.progression),
 	"Asuka Trophy": ItemData(18, ItemClassification.progression),
